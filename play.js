@@ -90,7 +90,7 @@ function windowOnLoad() {
           start: "1%", //animation starts at this point  - 20 px above the top of the trigger element
           endTrigger: "#plantLady",
           end: "bottom bottom",
-          scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
+          scrub: 6, // locks animation to scrollbar - can use 1, 2, 3 etc
           toggleActions: "restart pause reverse pause", // onEntry onLeaving onReEntry
           pinSpacing: false,
           // from: “center”,
@@ -114,8 +114,8 @@ function windowOnLoad() {
           // pin: "#seekBtn"
         },
       })
-      .from("#plantLady", { scale: 0.3, autoAlpha: 0, y: innerHeight * -0.1 })
-      .from("#whatDoYouSeek", { scale: 0.8, autoAlpha: 0 });
+      .from("#plantLady", { scale: 0.3, autoAlpha: 0, y: innerHeight * -0.1, ease: "back(1)" })
+      .from("#whatDoYouSeek", { scale: 0.8, autoAlpha: 0, ease: "back(1)" });
     // .to("#seekText", { y: -60 })
     // .to("#seekBtn", { y: -60})
   }
@@ -188,7 +188,7 @@ function windowOnLoad() {
           pinSpacing: false,
         },
       })
-      .from(".choiceTxt", { y: 100, scale: 0.8 });
+      .from(".choiceTxt", { y: 100, scale: 0.8, ease: "back(1)"});
     // .from("#upImg", { y: 70, scale: 0.6 })
     // .from("#downImg", { y: 70, scale: 0.6 })
   }
@@ -204,7 +204,7 @@ function windowOnLoad() {
           pinSpacing: false,
         },
       })
-      .from(".choiceTxt", { y: 100, scale: 0.8 });
+      .from(".choiceTxt", { y: 100, scale: 0.8, ease: "back(1)" });
     // .from(".imageRow", { y: 70, scale: 0.6 })
   }
 
@@ -223,8 +223,8 @@ function windowOnLoad() {
           // pin: "#seekBtn"
         },
       })
-      .from("#questionstxt", { scale: 0.4, autoAlpha: 0 })
-      .from("#blueSwimmer", { y: 100, scale: 0.4, autoAlpha: 0, rotate: 90 });
+      .from("#questionstxt", { scale: 0.4, autoAlpha: 0, ease: "back(1)" })
+      .from("#blueSwimmer", { y: 100, scale: 0.4, autoAlpha: 0, rotate: 90, ease: "back(1)" });
   }
 
   function blueSwimmerFallAni() {
@@ -261,15 +261,15 @@ function windowOnLoad() {
           // endTrigger: "poemLvl",
           // end: "bottom top",
           end: "+=900",
-          scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
+          scrub: 4, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
-          // pin: "#seekBtn"
+          // pin: "#poemLvl"
         },
       })
       .from("#poemLine1", { y: 100, autoAlpha: 0, scale: 0.8 })
       .from("#poemLine2", { y: 100, autoAlpha: 0, scale: 0.8 })
       .from("#poemLine3", { y: 100, autoAlpha: 0, scale: 0.8 })
-      .from("#finalplantLady", { y: 200, autoAlpha: 0, scale: 0.8 });
+      .from("#finalplantLady", { y: 40, autoAlpha: 0, scale: 0.2 });
   }
 
   function doNothing() {
@@ -663,11 +663,6 @@ function windowOnLoad() {
     // findSongBtn.innerHTML = "scroll";
   }
 
-  // is this an easier way to handle it?
-  // https://codepen.io/GreenSock/pen/gPgVbN?editors=001
-  // ci[counter].addEventListener("mouseover", () => hover.play());
-  // ci[counter].addEventListener("mouseleave", () => hover.reverse());
-
   function setupLady(btn, lady, ladyHvr) {
     const ladyAni = gsap.to(lady, {
       opacity: 0,
@@ -910,12 +905,19 @@ function windowOnLoad() {
   }
 
   function singleHover(me, them) {
+    var rotateThem = gsap.to(them, { scale: 1.1, paused: true });
+    var rotateMe = gsap.to(me, { scale: 1.1, paused: true });
     me.addEventListener("mouseenter", function() {
-      them.classList.add("highlight");
-    })
+      rotateThem.play();
+      rotateMe.play();
+      // them.classList.add("highlight");
+      console.log(me);
+    });
     me.addEventListener("mouseleave", function() {
-      them.classList.remove("highlight");
-    })
+      // them.classList.remove("highlight");
+      rotateThem.reverse();
+      rotateMe.reverse();
+    });
   }
   function mutualHover(img, txt) {
     singleHover(img, txt);

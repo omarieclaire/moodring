@@ -119,6 +119,23 @@
   }
 }
 
+.btn {
+  background-color: black;
+  background: black;
+  color: #c2f08e;
+  /* text-transform: uppercase; */
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
+  border: .5px solid #c2f08e;
+  padding: 7px 20px;
+  margin: 4px 2px;
+  transition: all 1s ease 2s;
+  opacity: .75;
+  border-radius: 7px;
+  font-family: 'PT Mono', monospace;
+}
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -1007,22 +1024,7 @@ h1 {
   display: none;
 }
 
-.btn {
-  background-color: black;
-  background: black;
-  color: #c2f08e;
-  /* text-transform: uppercase; */
-  text-decoration: none;
-  font-size: 1rem;
-  text-align: center;
-  border: .5px solid #c2f08e;
-  padding: 7px 20px;
-  margin: 4px 2px;
-  transition: all 1s ease 2s;
-  opacity: .75;
-  border-radius: 7px;
-  font-family: 'PT Mono', monospace;
-}
+
 
 .beginBtnToScroll {
   border: .0px solid black;
