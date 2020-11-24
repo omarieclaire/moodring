@@ -808,21 +808,21 @@ function windowOnLoad() {
 
     if (playerState.q1 !== undefined) {
       const img = document.createElement("img");
-      img.setAttribute("src", `images/choices/${playerState.q1}.png`);
+      img.setAttribute("src", `images/choices/lowerSize/${playerState.q1}.png`);
       img.setAttribute("class", "finalImage");
       // finalImageRow.appendChild(img);
     }
 
     if (playerState.q2 !== undefined) {
       const img = document.createElement("img");
-      img.setAttribute("src", `images/choices/${playerState.q2}.png`);
+      img.setAttribute("src", `images/choices/lowerSize/${playerState.q2}.png`);
       img.setAttribute("class", "finalImage");
       // finalImageRow.appendChild(img);
     }
 
     if (playerState.q3 !== undefined) {
       const img = document.createElement("img");
-      img.setAttribute("src", `images/choices/${playerState.q3}.png`);
+      img.setAttribute("src", `images/choices/lowerSize/${playerState.q3}.png`);
       img.setAttribute("class", "finalImage");
       // finalImageRow.appendChild(img);
     }
