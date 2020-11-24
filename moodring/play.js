@@ -350,12 +350,12 @@ function windowOnLoad() {
       playSound(backgroundMusic);
       // muteBtn.classList.add("mute");
       muteBtn.style.background =
-        "url('images/mute.png') no-repeat center center / contain";
+        "url('images/ui/mute.png') no-repeat center center / contain";
     } else {
       // console.log("pause audio");
       backgroundMusic.pause();
       muteBtn.style.background =
-        "url('images/unMute.png') no-repeat center center / contain";
+        "url('images/ui/unMute.png') no-repeat center center / contain";
     }
     muted = !muted;
   }

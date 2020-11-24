@@ -1057,7 +1057,7 @@ h1 {
   height: 1.5rem;
   width: 1.5rem;
   position: fixed;
-  background-image: url(images/mute.png);
+  background-image: url(images/ui/mute.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -1122,7 +1122,7 @@ h1 {
   opacity: .8;
   /* border: 5px dotted #00e8c4 */
   border-radius: 50%;
-  background-image: url(images/gem-play.png);
+  background-image: url(images/lastLvl/gem-play.png);
   background-size: cover;
 }
 
@@ -1177,7 +1177,7 @@ h1 {
   border: 0px solid #fe827b;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.5);
-  background-image: url(images/play-pause-button.png);
+  background-image: url(images/ui/play-pause-button.png);
   background-size: 100% auto;
   cursor: pointer;
 }
