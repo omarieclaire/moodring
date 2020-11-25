@@ -142,24 +142,15 @@ function windowOnLoad() {
   }
 
   function choiceAni(lvl, txt, image, runWhenComplete) {
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: lvl,
-          start: "center center", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-          end: "+=200", // bottom of the trigger element hits the top of the viewport
-          scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
-          pinSpacing: false,
-        },
-      })
-      .from(txt, {
+    
+    gsap.to(image, { scale: 1.7, duration: 6});
+    gsap.from(txt, {
         y: 200,
         scale: 0.8,
+        duration: 5,
         ease: "back(1)",
         onComplete: runWhenComplete,
       })
-      .to(image, { scale: 1.7, duration: 6});
   }
 
   function blueSwimmerAni(lvl, txt, image, runWhenComplete) {
@@ -330,6 +321,10 @@ function windowOnLoad() {
     }
   }
 
+  ////////////////////////////
+  ////// music player ///////
+  ////////////////////////////
+
   (function (d) {
     "use strict";
 
@@ -459,6 +454,10 @@ function windowOnLoad() {
     document.getElementById("generatorTxt").innerHTML = result;
   }
 
+  ////////////////////////////
+  ///////// player //////////
+  ////////////////////////////
+
   var playerState = {
     level: "none",
     itemSought: "peace",
@@ -467,6 +466,10 @@ function windowOnLoad() {
     q3: undefined,
     song: undefined,
   };
+
+  ////////////////////////////
+  /////// get elements ///////
+  ////////////////////////////
 
   const beginLvl = document.getElementById("beginLvl");
   const playerQuestionLvl = document.getElementById("playerQuestionLvl");
@@ -493,7 +496,48 @@ function windowOnLoad() {
   const spacer6 = document.getElementById("spacer6");
   const spacer7 = document.getElementById("spacer7");
 
-  // set each level to be invisible
+  // get all the links
+  const upLink = document.getElementById("upLink");
+  const downLink = document.getElementById("downLink");
+  const darkLink = document.getElementById("darkLink");
+  const joyLink = document.getElementById("joyLink");
+  const chaosLink = document.getElementById("chaosLink");
+  const calmLink = document.getElementById("calmLink");
+  const forestLink = document.getElementById("forestLink");
+  const meadowLink = document.getElementById("meadowLink");
+  const outLink = document.getElementById("outLink");
+  const inLink = document.getElementById("inLink");
+  const morningLink = document.getElementById("morningLink");
+  const nightLink = document.getElementById("nightLink");
+  const unfoldLink = document.getElementById("unfoldLink");
+  const cycleLink = document.getElementById("cycleLink");
+  // get all the images
+  const upImg = document.getElementById("upImg");
+  const downImg = document.getElementById("downImg");
+  const darkImg = document.getElementById("darkImg");
+  const joyImg = document.getElementById("joyImg");
+  const chaosImg = document.getElementById("chaosImg");
+  const calmImg = document.getElementById("calmImg");
+  const forestImg = document.getElementById("forestImg");
+  const meadowImg = document.getElementById("meadowImg");
+  const outImg = document.getElementById("outImg");
+  const inImg = document.getElementById("inImg");
+  const morningImg = document.getElementById("morningImg");
+  const nightImg = document.getElementById("nightImg");
+  const unfoldImg = document.getElementById("unfoldImg");
+  const cycleImg = document.getElementById("cycleImg");
+
+  var learnMoreBtn = document.getElementById("learnMoreBtn");
+  var seatedLadyL = document.getElementById("seatedLadyL");
+  var seatedLadyLHvr = document.getElementById("seatedLadyLHvr");
+  var startOverBtn = document.getElementById("startOverBtn");
+  var seatedLadyC = document.getElementById("seatedLadyC");
+  var seatedLadyCHvr = document.getElementById("seatedLadyCHvr");
+  var creditsBtn = document.getElementById("creditsBtn");
+  var seatedLadyR = document.getElementById("seatedLadyR");
+  var seatedLadyRHvr = document.getElementById("seatedLadyRHvr");
+
+  // set invisible
   playerQuestionLvl.style.display = "none";
   questions3Lvl.style.display = "none";
   choice1Lvl.style.display = "none";
@@ -517,8 +561,11 @@ function windowOnLoad() {
   spacer5.style.display = "none";
   spacer6.style.display = "none";
   spacer7.style.display = "none";
-
   muteBtn.style.display = "none";
+
+  ////////////////////////////
+  /////// scroll arrow ///////
+  ////////////////////////////
 
   function displayScrollArrow(parent) {
     const arrowDiv = document.createElement("div");
@@ -537,6 +584,10 @@ function windowOnLoad() {
     }
     arrowDiv.appendChild(containerDiv);
   }
+
+  ////////////////////////////
+  ////// button town  ///////
+  ////////////////////////////
 
   var beginBtn = document.getElementById("beginBtn"); // get the button
   beginBtn.addEventListener("click", beginBtnHandler); // add an eventlistener to the enter button
@@ -615,7 +666,6 @@ function windowOnLoad() {
   findSongBtn.addEventListener("click", findSongBtnHandler);
   function findSongBtnHandler(event) {
     fadeSound();
-
     spacer6.style.display = "grid";
     poemLvl.style.display = "grid";
     lastLvl.style.display = "grid";
@@ -632,121 +682,9 @@ function windowOnLoad() {
     // findSongBtn.innerHTML = "scroll";
   }
 
-  function setupLady(btn, lady, ladyHvr) {
-    const ladyAni = gsap.to(lady, {
-      opacity: 0,
-      duration: 1,
-      ease: "none",
-      paused: true,
-    });
-    const ladyHvrAni = gsap.to(ladyHvr, {
-      opacity: 1,
-      duration: 1,
-      ease: "none",
-      paused: true,
-    });
-
-    function btnHvr(event) {
-      ladyAni.play();
-      ladyHvrAni.play();
-    }
-
-    function btnLeave(event) {
-      ladyAni.reverse();
-      ladyHvrAni.reverse();
-    }
-
-    btn.addEventListener("mouseover", btnHvr);
-    btn.addEventListener("mouseleave", btnLeave);
-  }
-
-  var learnMoreBtn = document.getElementById("learnMoreBtn");
-  var seatedLadyL = document.getElementById("seatedLadyL");
-  var seatedLadyLHvr = document.getElementById("seatedLadyLHvr");
-  var startOverBtn = document.getElementById("startOverBtn");
-  var seatedLadyC = document.getElementById("seatedLadyC");
-  var seatedLadyCHvr = document.getElementById("seatedLadyCHvr");
-  var creditsBtn = document.getElementById("creditsBtn");
-  var seatedLadyR = document.getElementById("seatedLadyR");
-  var seatedLadyRHvr = document.getElementById("seatedLadyRHvr");
-
-  setupLady(learnMoreBtn, seatedLadyL, seatedLadyLHvr);
-  setupLady(startOverBtn, seatedLadyC, seatedLadyCHvr);
-  setupLady(creditsBtn, seatedLadyR, seatedLadyRHvr);
-
-  function learnMoreBtnHandler(event) {
-    playSound(beginSound);
-  }
-  function startOverBtnHandler(event) {
-    playSound(beginSound);
-  }
-  function creditsBtnHandler(event) {
-    playSound(beginSound);
-    creditsLvl.style.display = "grid";
-  }
-  learnMoreBtn.addEventListener("click", learnMoreBtnHandler);
-  startOverBtn.addEventListener("click", startOverBtnHandler);
-  creditsBtn.addEventListener("click", creditsBtnHandler);
-
-  // function displayPlayerQuestion() {
-  //   var x = document.getElementsByClassName("playerQuestion");
-  //   var i;
-  //   for (i = 0; i < x.length; i++) {
-  //     x[i].innerHTML = playerState.itemSought;
-  //   }
-  // }
-
-  // gsap.utils.toArray("choiceImage").forEach(choiceImage => {
-  //   let hover = gsap.to(choiceImage, {scale: 3, color: "blue", duration: 1.5, paused: true, ease: "power1.inOut"});
-  //   h1.addEventListener("mouseenter", () => hover.play());
-  //   h1.addEventListener("mouseleave", () => hover.reverse());
-  // });
-
-  // function hoverOnChoiceImage() {
-
-  // var ci = document.getElementsByClassName("choiceImage");
-  // var counter;
-  // for (counter = 0; counter < ci.length; counter++) {
-  //   const hover = gsap.to(ci[counter], {
-  //     scale: 1.3,
-  //     duration: 10,
-  //     paused: true,
-  //     ease: "Expo.easeOut",
-  //   });
-  //   ci[counter].addEventListener("mouseover", () => hover.play());
-  //   ci[counter].addEventListener("mouseleave", () => hover.reverse());
-  // }
-
-  // get all the links
-  const upLink = document.getElementById("upLink");
-  const downLink = document.getElementById("downLink");
-  const darkLink = document.getElementById("darkLink");
-  const joyLink = document.getElementById("joyLink");
-  const chaosLink = document.getElementById("chaosLink");
-  const calmLink = document.getElementById("calmLink");
-  const forestLink = document.getElementById("forestLink");
-  const meadowLink = document.getElementById("meadowLink");
-  const outLink = document.getElementById("outLink");
-  const inLink = document.getElementById("inLink");
-  const morningLink = document.getElementById("morningLink");
-  const nightLink = document.getElementById("nightLink");
-  const unfoldLink = document.getElementById("unfoldLink");
-  const cycleLink = document.getElementById("cycleLink");
-  // get all the images
-  const upImg = document.getElementById("upImg");
-  const downImg = document.getElementById("downImg");
-  const darkImg = document.getElementById("darkImg");
-  const joyImg = document.getElementById("joyImg");
-  const chaosImg = document.getElementById("chaosImg");
-  const calmImg = document.getElementById("calmImg");
-  const forestImg = document.getElementById("forestImg");
-  const meadowImg = document.getElementById("meadowImg");
-  const outImg = document.getElementById("outImg");
-  const inImg = document.getElementById("inImg");
-  const morningImg = document.getElementById("morningImg");
-  const nightImg = document.getElementById("nightImg");
-  const unfoldImg = document.getElementById("unfoldImg");
-  const cycleImg = document.getElementById("cycleImg");
+////////////////////////////
+////// render song  ///////
+///////////////////////////
 
   function renderSong(playerState) {
     if (playerState.q3 === undefined) {
@@ -768,6 +706,10 @@ function windowOnLoad() {
     var audio = document.getElementById("player1");
     audio.load();
   }
+
+////////////////////////////
+////// final images  ///////
+///////////////////////////
 
   // draws the final images based on playerState
   function renderplayerState(playerState) {
@@ -797,6 +739,10 @@ function windowOnLoad() {
     }
     // console.log("render player state");
   }
+
+////////////////////////////
+////// link handler  ///////
+///////////////////////////
 
   // called when the links are clicked
   function makeLinkHandler(
@@ -867,6 +813,7 @@ function windowOnLoad() {
         renderplayerState(playerState);
         renderSong(playerState);
       } else if (level === 3) {
+        blueSwimmerAni(); 
         playerState.q3 = chosenValue;
         story.q3.push(chosenValue);
 
@@ -877,8 +824,13 @@ function windowOnLoad() {
     return linkHandler;
   }
 
+
+////////////////////////////
+/////// hover town  ////////
+////////////////////////////
+
   function hoverOnChosenImg(chosenImg, chosenLink) {
-    var hoverOnImg = gsap.to(chosenImg, { scale: 1.4, duration: 6, paused: true });
+    var hoverOnImg = gsap.to(chosenImg, { scale: 1.4, duration: 6, paused: true});
     var hoverOnLink = gsap.to(chosenLink, { y: -.5, paused: true });
     function imgChoiceHoverAni(){
       hoverOnLink.play();
@@ -975,6 +927,10 @@ function windowOnLoad() {
     const chosenHoverObjs = hoverHandlers(chosenImg, chosenLink);
     const unChosenHoverObjs = hoverHandlers(unChosenImg, unChosenLink);
 
+/////////////////////////////
+///// kill animations  //////
+////////////////////////////
+
     function killAllAnimations() {
       chosenHoverObjs.hoverOnImgValues.hoverOnImgGsap.kill();
       chosenHoverObjs.hoverOnImgValues.hoverOnTxtGsap.kill();
@@ -1053,7 +1009,8 @@ function windowOnLoad() {
     "calm",
     3,
     spacer5,
-    blueSwimmerAni,
+    choiceAni,
+    // blueSwimmerAni,
     chaosLink,
     chaosImg,
     calmLink,
@@ -1067,7 +1024,8 @@ function windowOnLoad() {
     "meadow",
     3,
     spacer5,
-    blueSwimmerAni,
+    choiceAni,
+    // blueSwimmerAni,
     forestLink,
     forestImg,
     meadowLink,
@@ -1095,7 +1053,8 @@ function windowOnLoad() {
     "night",
     3,
     spacer5,
-    blueSwimmerAni,
+    choiceAni,
+    // blueSwimmerAni,
     morningLink,
     morningImg,
     nightLink,
@@ -1109,12 +1068,66 @@ function windowOnLoad() {
     "cycle",
     3,
     spacer5,
-    blueSwimmerAni,
+    choiceAni,
+    // blueSwimmerAni,
     unfoldLink,
     unfoldImg,
     cycleLink,
     cycleImg
   );
 }
+
+////////////////////////////
+////// bottom ladies  ///////
+////////////////////////////
+
+  function setupLady(btn, lady, ladyHvr) {
+    const ladyAni = gsap.to(lady, {
+      opacity: 0,
+      duration: 1,
+      ease: "none",
+      paused: true,
+    });
+    const ladyHvrAni = gsap.to(ladyHvr, {
+      opacity: 1,
+      duration: 1,
+      ease: "none",
+      paused: true,
+    });
+
+    function btnHvr(event) {
+      ladyAni.play();
+      ladyHvrAni.play();
+    }
+
+    function btnLeave(event) {
+      ladyAni.reverse();
+      ladyHvrAni.reverse();
+    }
+
+    btn.addEventListener("mouseover", btnHvr);
+    btn.addEventListener("mouseleave", btnLeave);
+  }
+
+  setupLady(learnMoreBtn, seatedLadyL, seatedLadyLHvr);
+  setupLady(startOverBtn, seatedLadyC, seatedLadyCHvr);
+  setupLady(creditsBtn, seatedLadyR, seatedLadyRHvr);
+
+
+  function learnMoreBtnHandler(event) {
+    playSound(beginSound);
+  }
+  function startOverBtnHandler(event) {
+    playSound(beginSound);
+  }
+  function creditsBtnHandler(event) {
+    playSound(beginSound);
+    creditsLvl.style.display = "grid";
+  }
+  learnMoreBtn.addEventListener("click", learnMoreBtnHandler);
+  startOverBtn.addEventListener("click", startOverBtnHandler);
+  creditsBtn.addEventListener("click", creditsBtnHandler);
+
+
 
 window.addEventListener("load", windowOnLoad);
