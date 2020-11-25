@@ -142,14 +142,14 @@ function windowOnLoad() {
   }
 
   function choiceAni(lvl, txt, image, runWhenComplete) {
-    gsap.to(image, { scale: 1.7, duration: 6});
+    gsap.to(image, { scale: 1.7, duration: 6 });
     gsap.from(txt, {
-        y: 200,
-        scale: 0.8,
-        duration: 5,
-        ease: "back(1)",
-        onComplete: runWhenComplete,
-      })
+      y: 200,
+      scale: 0.8,
+      duration: 5,
+      ease: "back(1)",
+      onComplete: runWhenComplete,
+    });
   }
 
   function blueSwimmerAni(lvl, txt, image, runWhenComplete) {
@@ -274,8 +274,6 @@ function windowOnLoad() {
 
   const backgroundMusic = new Audio("./sounds/backgroundMusic.mp3");
   backgroundMusic.load();
-  // playSound(backgroundMusic);
-
   backgroundMusic.loop = true;
 
   const beginSound = new Audio("./sounds/beginSound.mp3");
@@ -683,9 +681,9 @@ function windowOnLoad() {
     // findSongBtn.innerHTML = "scroll";
   }
 
-////////////////////////////
-////// render song  ///////
-///////////////////////////
+  ////////////////////////////
+  ////// render song  ///////
+  ///////////////////////////
 
   function renderSong(playerState) {
     if (playerState.q3 === undefined) {
@@ -708,9 +706,9 @@ function windowOnLoad() {
     audio.load();
   }
 
-////////////////////////////
-////// final images  ///////
-///////////////////////////
+  ////////////////////////////
+  ////// final images  ///////
+  ///////////////////////////
 
   // draws the final images based on playerState
   function renderplayerState(playerState) {
@@ -741,9 +739,9 @@ function windowOnLoad() {
     // console.log("render player state");
   }
 
-////////////////////////////
-////// link handler  ///////
-///////////////////////////
+  ////////////////////////////
+  ////// link handler  ///////
+  ///////////////////////////
 
   // called when the links are clicked
   function makeLinkHandler(
@@ -770,15 +768,10 @@ function windowOnLoad() {
       const textPhrase = document.getElementById(chosenTextPhrase);
 
       // function scrollTriggerCallback() {
-        textDom.innerHTML = textPhrase.innerHTML;
-        // textDom.classList.add("glow");
+      textDom.innerHTML = textPhrase.innerHTML;
+      // textDom.classList.add("glow");
       // }
-      scrollTriggerFun(
-        textDom,
-        textPhrase,
-        chosenImageDOM,
-        doNothing
-      );
+      scrollTriggerFun(textDom, textPhrase, chosenImageDOM, doNothing);
       const unchosenImageId = unchosenValue + "Img";
       const unchosenImageDOM = document.getElementById(unchosenImageId);
       unchosenImageDOM.classList.remove("cursorHand");
@@ -800,9 +793,9 @@ function windowOnLoad() {
       }, 10000);
       // console.log(story[stateKey]);
 
-////////////////////////////
-/////// ?????? town  ////////
-////////////////////////////
+      ////////////////////////////
+      /////// ?????? town  ////////
+      ////////////////////////////
 
       // console.log(JSON.stringify(playerState));
       if (level === 1) {
@@ -818,7 +811,7 @@ function windowOnLoad() {
         renderplayerState(playerState);
         renderSong(playerState);
       } else if (level === 3) {
-        blueSwimmerAni(); 
+        blueSwimmerAni();
         playerState.q3 = chosenValue;
         story.q3.push(chosenValue);
 
@@ -829,22 +822,25 @@ function windowOnLoad() {
     return linkHandler;
   }
 
-
-////////////////////////////
-/////// hover town  ////////
-////////////////////////////
+  ////////////////////////////
+  /////// hover town  ////////
+  ////////////////////////////
 
   function hoverOnChosenImg(chosenImg, chosenPhrase) {
-    var hoverOnImg = gsap.to(chosenImg, { scale: 1.4, duration: 6, paused: true});
-    var hoverOnLink = gsap.to(chosenPhrase, { y: -.5, paused: true });
-    function imgChoiceHoverAni(){
+    var hoverOnImg = gsap.to(chosenImg, {
+      scale: 1.4,
+      duration: 6,
+      paused: true,
+    });
+    var hoverOnLink = gsap.to(chosenPhrase, { y: -0.5, paused: true });
+    function imgChoiceHoverAni() {
       hoverOnLink.play();
       hoverOnImg.play();
       chosenPhrase.classList.add("highlight");
       chosenImg.classList.add("highlight");
     }
     chosenImg.addEventListener("mouseenter", imgChoiceHoverAni);
-    function imgRemoveChoiceHoverAni(){
+    function imgRemoveChoiceHoverAni() {
       hoverOnLink.reverse();
       hoverOnImg.reverse();
       chosenPhrase.classList.remove("highlight");
@@ -855,14 +851,18 @@ function windowOnLoad() {
       hoverOnImgGsap: hoverOnImg,
       hoverOnTxtGsap: hoverOnLink,
       mouseEnterFun: imgChoiceHoverAni,
-      mouseleaveFun: imgRemoveChoiceHoverAni
+      mouseleaveFun: imgRemoveChoiceHoverAni,
     };
     return returnObj;
   }
 
   function hoverOnChosenTxt(chosenTxt, chosenImg) {
-    var hoverOnImg = gsap.to(chosenImg, { scale: 1.4, duration: 6, paused: true });
-    var hoverOnTxt = gsap.to(chosenTxt, { y: -.5, paused: true });
+    var hoverOnImg = gsap.to(chosenImg, {
+      scale: 1.4,
+      duration: 6,
+      paused: true,
+    });
+    var hoverOnTxt = gsap.to(chosenTxt, { y: -0.5, paused: true });
     function txtChoiceHoverAni() {
       hoverOnImg.play();
       hoverOnTxt.play();
@@ -881,7 +881,7 @@ function windowOnLoad() {
       hoverOnImgGsap: hoverOnImg,
       hoverOnTxtGsap: hoverOnTxt,
       mouseEnterFun: txtChoiceHoverAni,
-      mouseleaveFun: txtChoiceHoverRemoveAni
+      mouseleaveFun: txtChoiceHoverRemoveAni,
     };
     return returnObj;
   }
@@ -932,9 +932,9 @@ function windowOnLoad() {
     const chosenHoverObjs = hoverHandlers(chosenImg, chosenPhrase);
     const unChosenHoverObjs = hoverHandlers(unChosenImg, unChosenPhrase);
 
-/////////////////////////////
-///// kill animations  //////
-////////////////////////////
+    /////////////////////////////
+    ///// kill animations  //////
+    ////////////////////////////
 
     function killAllAnimations() {
       chosenHoverObjs.hoverOnImgValues.hoverOnImgGsap.kill();
@@ -947,15 +947,39 @@ function windowOnLoad() {
       unChosenHoverObjs.hoverOnTxtValues.hoverOnImgGsap.kill();
       unChosenHoverObjs.hoverOnTxtValues.hoverOnTxtGsap.kill();
 
-      chosenImg.removeEventListener("mouseenter", chosenHoverObjs.hoverOnImgValues.mouseEnterFun);
-      chosenImg.removeEventListener("mouseleave", chosenHoverObjs.hoverOnImgValues.mouseleaveFun);
-      chosenPhrase.removeEventListener("mouseenter", chosenHoverObjs.hoverOnTxtValues.mouseEnterFun);
-      chosenPhrase.removeEventListener("mouseleave", chosenHoverObjs.hoverOnTxtValues.mouseleaveFun);
+      chosenImg.removeEventListener(
+        "mouseenter",
+        chosenHoverObjs.hoverOnImgValues.mouseEnterFun
+      );
+      chosenImg.removeEventListener(
+        "mouseleave",
+        chosenHoverObjs.hoverOnImgValues.mouseleaveFun
+      );
+      chosenPhrase.removeEventListener(
+        "mouseenter",
+        chosenHoverObjs.hoverOnTxtValues.mouseEnterFun
+      );
+      chosenPhrase.removeEventListener(
+        "mouseleave",
+        chosenHoverObjs.hoverOnTxtValues.mouseleaveFun
+      );
 
-      unChosenImg.removeEventListener("mouseenter", unChosenHoverObjs.hoverOnImgValues.mouseEnterFun);
-      unChosenImg.removeEventListener("mouseleave", unChosenHoverObjs.hoverOnImgValues.mouseleaveFun);
-      unChosenPhrase.removeEventListener("mouseenter", unChosenHoverObjs.hoverOnTxtValues.mouseEnterFun);
-      unChosenPhrase.removeEventListener("mouseleave", unChosenHoverObjs.hoverOnTxtValues.mouseleaveFun);
+      unChosenImg.removeEventListener(
+        "mouseenter",
+        unChosenHoverObjs.hoverOnImgValues.mouseEnterFun
+      );
+      unChosenImg.removeEventListener(
+        "mouseleave",
+        unChosenHoverObjs.hoverOnImgValues.mouseleaveFun
+      );
+      unChosenPhrase.removeEventListener(
+        "mouseenter",
+        unChosenHoverObjs.hoverOnTxtValues.mouseEnterFun
+      );
+      unChosenPhrase.removeEventListener(
+        "mouseleave",
+        unChosenHoverObjs.hoverOnTxtValues.mouseleaveFun
+      );
 
       chosenPhrase.removeEventListener("click", chosenHandler);
       unChosenPhrase.removeEventListener("click", unChosenHandler);
@@ -964,16 +988,16 @@ function windowOnLoad() {
     }
 
     // once: true tells the browser to unregister the handler after it's clicked
-    chosenPhrase.addEventListener("click", chosenHandler, {once: true});
+    chosenPhrase.addEventListener("click", chosenHandler, { once: true });
     chosenPhrase.addEventListener("click", killAllAnimations);
 
-    unChosenPhrase.addEventListener("click", unChosenHandler, {once: true});
+    unChosenPhrase.addEventListener("click", unChosenHandler, { once: true });
     unChosenPhrase.addEventListener("click", killAllAnimations);
 
-    chosenImg.addEventListener("click", chosenHandler, {once: true});
+    chosenImg.addEventListener("click", chosenHandler, { once: true });
     chosenImg.addEventListener("click", killAllAnimations);
 
-    unChosenImg.addEventListener("click", unChosenHandler, {once: true});
+    unChosenImg.addEventListener("click", unChosenHandler, { once: true });
     unChosenImg.addEventListener("click", killAllAnimations);
   }
 
@@ -1086,53 +1110,50 @@ function windowOnLoad() {
 ////// bottom ladies  ///////
 ////////////////////////////
 
-  function setupLady(btn, lady, ladyHvr) {
-    const ladyAni = gsap.to(lady, {
-      opacity: 0,
-      duration: 1,
-      ease: "none",
-      paused: true,
-    });
-    const ladyHvrAni = gsap.to(ladyHvr, {
-      opacity: 1,
-      duration: 1,
-      ease: "none",
-      paused: true,
-    });
+function setupLady(btn, lady, ladyHvr) {
+  const ladyAni = gsap.to(lady, {
+    opacity: 0,
+    duration: 1,
+    ease: "none",
+    paused: true,
+  });
+  const ladyHvrAni = gsap.to(ladyHvr, {
+    opacity: 1,
+    duration: 1,
+    ease: "none",
+    paused: true,
+  });
 
-    function btnHvr(event) {
-      ladyAni.play();
-      ladyHvrAni.play();
-    }
-
-    function btnLeave(event) {
-      ladyAni.reverse();
-      ladyHvrAni.reverse();
-    }
-
-    btn.addEventListener("mouseover", btnHvr);
-    btn.addEventListener("mouseleave", btnLeave);
+  function btnHvr(event) {
+    ladyAni.play();
+    ladyHvrAni.play();
   }
 
-  setupLady(learnMoreBtn, seatedLadyL, seatedLadyLHvr);
-  setupLady(startOverBtn, seatedLadyC, seatedLadyCHvr);
-  setupLady(creditsBtn, seatedLadyR, seatedLadyRHvr);
-
-
-  function learnMoreBtnHandler(event) {
-    playSound(sendSound);
+  function btnLeave(event) {
+    ladyAni.reverse();
+    ladyHvrAni.reverse();
   }
-  function startOverBtnHandler(event) {
-    playSound(sendSound);
-  }
-  function creditsBtnHandler(event) {
-    playSound(sendSound);
-    creditsLvl.style.display = "grid";
-  }
-  learnMoreBtn.addEventListener("click", learnMoreBtnHandler);
-  startOverBtn.addEventListener("click", startOverBtnHandler);
-  creditsBtn.addEventListener("click", creditsBtnHandler);
 
+  btn.addEventListener("mouseover", btnHvr);
+  btn.addEventListener("mouseleave", btnLeave);
+}
 
+setupLady(learnMoreBtn, seatedLadyL, seatedLadyLHvr);
+setupLady(startOverBtn, seatedLadyC, seatedLadyCHvr);
+setupLady(creditsBtn, seatedLadyR, seatedLadyRHvr);
+
+function learnMoreBtnHandler(event) {
+  // playSound(sendSound);
+}
+function startOverBtnHandler(event) {
+  // playSound(sendSound);
+}
+function creditsBtnHandler(event) {
+  // playSound(sendSound);
+  creditsLvl.style.display = "grid";
+}
+learnMoreBtn.addEventListener("click", learnMoreBtnHandler);
+startOverBtn.addEventListener("click", startOverBtnHandler);
+creditsBtn.addEventListener("click", creditsBtnHandler);
 
 window.addEventListener("load", windowOnLoad);
