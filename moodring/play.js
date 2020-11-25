@@ -29,7 +29,7 @@ function windowOnLoad() {
         { scale: 0.4, opacity: 0, duration: 11, y: 100, ease: "slow" },
         0.4,
         "Start"
-      )
+      );
   }
   const pushStartLvlAwayAni = pushStartLvlAway();
 
@@ -95,9 +95,14 @@ function windowOnLoad() {
           pinSpacing: false,
         },
       })
-      .from("#plantLady", { scale: 0.3, autoAlpha: 0, y: innerHeight * -0.1, ease: "back(2)" })
+      .from("#plantLady", {
+        scale: 0.3,
+        autoAlpha: 0,
+        y: innerHeight * -0.1,
+        ease: "back(2)",
+      })
       .from("#whatDoYouSeek", { scale: 0.8, autoAlpha: 0, ease: "back(1)" })
-    .from("#seekText", { scale: 0.8 })
+      .from("#seekText", { scale: 0.8 });
   }
   function questions3LvlAni() {
     gsap
@@ -108,7 +113,6 @@ function windowOnLoad() {
           end: "+=150",
           scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
-          // pin: "#seekBtn"
         },
       })
       // .from("#questionstxt1", { y: innerHeight, scale: 0.2, autoAlpha: 0 })
@@ -127,51 +131,54 @@ function windowOnLoad() {
         scrollTrigger: {
           trigger: "#questions3Lvl",
           start: "top top", //animation starts at this point  - 20 px above the top of the trigger element
-          // end: "+=950",
           endTrigger: "#spacer2",
           end: "top top",
           scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
-          // pin: "#seekBtn"
         },
       })
       // .from("#questionstxt1", { y: innerHeight, scale: 0.2, autoAlpha: 0 })
       .to("#greenSwimmer", { y: 600, rotate: -90 });
   }
 
-  function choice1Ani() {
+  // function choice1Ani() {
+  //   gsap
+  //     .timeline({
+  //       scrollTrigger: {
+  //         trigger: "#spacer2",
+  //         start: "center center", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
+  //         end: "+=200", // bottom of the trigger element hits the top of the viewport
+  //         scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
+  //         pinSpacing: false,
+  //       },
+  //     })
+  //     .from(".choiceTxt", { y: 100, scale: 0.8, ease: "back(1)"});
+  //   // .from("#upImg", { y: 70, scale: 0.6 })
+  //   // .from("#downImg", { y: 70, scale: 0.6 })
+  // }
+
+  function choiceAni(lvl, txt, image, runWhenComplete) {
+    console.log(`lvl=${lvl} txt=${txt} image=${image}`);
     gsap
       .timeline({
         scrollTrigger: {
-          trigger: "#spacer2",
+          trigger: lvl,
           start: "center center", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
           end: "+=200", // bottom of the trigger element hits the top of the viewport
           scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
         },
       })
-      .from(".choiceTxt", { y: 100, scale: 0.8, ease: "back(1)"});
-    // .from("#upImg", { y: 70, scale: 0.6 })
-    // .from("#downImg", { y: 70, scale: 0.6 })
-  }
-
-  function choiceAni() {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".choiceLvl",
-          start: "center center", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-          end: "+=200", // bottom of the trigger element hits the top of the viewport
-          scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
-          pinSpacing: false,
-        },
+      .from(txt, {
+        y: 200,
+        scale: 0.8,
+        ease: "back(1)",
+        onComplete: runWhenComplete,
       })
-      .from(".choiceTxt", { y: 100, scale: 0.8, ease: "back(1)" });
-    // .from(".imageRow", { y: 70, scale: 0.6 })
-    console.log("choice ani");
+      .to(image, { y: 70, rotate: 360 });
   }
 
-  function blueSwimmerAni() {
+  function blueSwimmerAni(lvl, txt, image, runWhenComplete) {
     gsap
       .timeline({
         scrollTrigger: {
@@ -186,7 +193,13 @@ function windowOnLoad() {
         },
       })
       .from("#questionstxt", { scale: 0.4, autoAlpha: 0, ease: "back(1)" })
-      .from("#blueSwimmer", { y: 100, scale: 0.4, autoAlpha: 0, rotate: 90, ease: "back(1)" });
+      .from("#blueSwimmer", {
+        y: 100,
+        scale: 0.4,
+        autoAlpha: 0,
+        rotate: 90,
+        ease: "back(1)",
+      });
   }
 
   function blueSwimmerFallAni() {
@@ -572,16 +585,12 @@ function windowOnLoad() {
     // input.focus();
   }
 
-
-
-
-
   const seekText = document.getElementById("seekText");
   const seekBtn = document.getElementById("seekBtn");
   seekBtn.style.opacity = 0.19;
 
-  function showSeekBtn(){
-    gsap.to("#seekBtn", { opacity: 1, duration: .25 });
+  function showSeekBtn() {
+    gsap.to("#seekBtn", { opacity: 1, duration: 0.25 });
   }
 
   setTimeout(function () {
@@ -589,7 +598,6 @@ function windowOnLoad() {
   }, 10000);
 
   seekText.addEventListener("keyup", showSeekBtn);
-
 
   seekBtn.addEventListener("click", seekBtnHandler); // add an eventlistener to the  button
   function seekBtnHandler(event) {
@@ -615,7 +623,7 @@ function windowOnLoad() {
     choice1Lvl.style.display = "grid";
     // displayPlayerQuestion();
     questions3LvlAni();
-    choice1Ani();
+    // choice1Ani();
     greenSwimmerFollowAni();
   }
 
@@ -803,7 +811,7 @@ function windowOnLoad() {
       img.setAttribute("class", "finalImage");
       // finalImageRow.appendChild(img);
     }
-    console.log("render player state");
+    // console.log("render player state");
   }
 
   // called when the links are clicked
@@ -823,15 +831,22 @@ function windowOnLoad() {
       const chosenImageDOM = document.getElementById(chosenImageId);
       chosenImageDOM.classList.remove("cursorHand");
       chosenImageDOM.classList.add("glow");
-      // console.log(stateKey);
       const chosenTextId = stateKey + "Text";
       const textDom = document.getElementById(chosenTextId);
 
       const chosenTextPhrase = chosenValue + "Link";
-      const textPhrase = document.getElementById(chosenTextPhrase).innerHTML;
-      // console.log(textDom);
-      textDom.innerHTML = textPhrase;
-      textDom.classList.add("glow");
+      const textPhrase = document.getElementById(chosenTextPhrase);
+
+      function scrollTriggerCallback() {
+        textDom.innerHTML = textPhrase.innerHTML;
+        // textDom.classList.add("glow");
+      }
+      scrollTriggerFun(
+        textDom,
+        textPhrase,
+        chosenImageDOM,
+        scrollTriggerCallback
+      );
 
       const unchosenImageId = unchosenValue + "Img";
       const unchosenImageDOM = document.getElementById(unchosenImageId);
@@ -842,8 +857,6 @@ function windowOnLoad() {
       // const unchosenTextId = unchosenValue+"Link";
       // const unchosenTextDOM = document.getElementById(unchosenTextId);
       // unchosenTextDOM.classList.add('fade');
-
-      scrollTriggerFun();
 
       link.style.display = "grid";
       spacer.style.display = "grid";
@@ -880,27 +893,83 @@ function windowOnLoad() {
     return linkHandler;
   }
 
-  function singleHover(me, them) {
-    var hoverOnThem = gsap.to(them, { opacity: 1, paused: true });
-    var hoverOnMe = gsap.to(me, { opacity: 1, paused: true });
-    me.addEventListener("mouseenter", function() {
-      hoverOnThem.play();
-      hoverOnMe.play();
-      them.classList.add("hueRotateGlow");
-      me.classList.add("hueRotateGlow");
-      // console.log(me);
-    });
-    me.addEventListener("mouseleave", function() {
-      // them.classList.remove("highlight");
-      hoverOnThem.reverse();
-      hoverOnMe.reverse();
-      them.classList.remove("hueRotateGlow");
-      me.classList.remove("hueRotateGlow");
-    });
+  function hoverOnChosenImg(chosenImg, chosenLink) {
+    var hoverOnImg = gsap.to(chosenImg, { rotate: 360, paused: true });
+    var hoverOnLink = gsap.to(chosenLink, { x: 30, paused: true });
+    function imgChoiceHoverAni(){
+      hoverOnLink.play();
+      hoverOnImg.play();
+      chosenLink.classList.add("hueRotateGlow");
+      chosenImg.classList.add("hueRotateGlow");
+    }
+    chosenImg.addEventListener("mouseenter", imgChoiceHoverAni);
+    // adds mouseleave eventlistener to image
+    // when your cursor leaves the image reverse the animations
+    // return the img GSAP var
+    function imgRemoveChoiceHoverAni(){
+      hoverOnLink.reverse();
+      hoverOnImg.reverse();
+      chosenLink.classList.remove("hueRotateGlow");
+      chosenImg.classList.remove("hueRotateGlow");
+    }
+    chosenImg.addEventListener("mouseleave", imgRemoveChoiceHoverAni);
+    // make a obj to store the scrolltriggers
+    const returnObj = {
+      hoverOnImgGsap: hoverOnImg,
+      hoverOnTxtGsap: hoverOnLink,
+      mouseEnterFun: imgChoiceHoverAni,
+      mouseleaveFun: imgRemoveChoiceHoverAni
+    };
+    return returnObj;
   }
-  function mutualHover(img, txt) {
-    singleHover(img, txt);
-    singleHover(txt, img);
+
+  // takes an image and a link
+  function hoverOnChosenTxt(chosenTxt, chosenImg) {
+    // makes a var for animating said image
+    // makes a var for animating said link
+    // adds mouseover eventlistener to image
+    // when you scroll over image play animations
+    var hoverOnImg = gsap.to(chosenImg, { rotate: 360, paused: true });
+    var hoverOnTxt = gsap.to(chosenTxt, { x: 30, paused: true });
+    function txtChoiceHoverAni() {
+      hoverOnImg.play();
+      hoverOnTxt.play();
+      chosenImg.classList.add("hueRotateGlow");
+      chosenTxt.classList.add("hueRotateGlow");
+    }
+    chosenTxt.addEventListener("mouseenter", txtChoiceHoverAni);
+    // adds mouseleave eventlistener to image
+    // when your cursor leaves the image reverse the animations
+    // return the img GSAP var
+    function txtChoiceHoverRemoveAni() {
+      hoverOnImg.reverse();
+      hoverOnTxt.reverse();
+      chosenImg.classList.remove("hueRotateGlow");
+      chosenTxt.classList.remove("hueRotateGlow");
+    }
+    chosenTxt.addEventListener("mouseleave", txtChoiceHoverRemoveAni);
+    // make a obj to store the scrolltriggers
+    const returnObj = {
+      hoverOnImgGsap: hoverOnImg,
+      hoverOnTxtGsap: hoverOnTxt,
+      mouseEnterFun: txtChoiceHoverAni,
+      mouseleaveFun: txtChoiceHoverRemoveAni
+    };
+    return returnObj;
+  }
+
+  function hoverHandlers(chosenImg, chosenLink) {
+    // create a var to store the returned obj from hoverOnImg
+    const hoverOnImgValues = hoverOnChosenImg(chosenImg, chosenLink);
+    // create a var to store the returned obj from hoverOnTxt
+    const hoverOnTxtValues = hoverOnChosenTxt(chosenLink, chosenImg);
+    // make a obj to store the these objects
+    const returnObj = {
+      //returns an obj which contains an obj
+      hoverOnImgValues: hoverOnImgValues,
+      hoverOnTxtValues: hoverOnTxtValues,
+    };
+    return returnObj;
   }
 
   function setupLvlHandlers(
@@ -936,32 +1005,48 @@ function windowOnLoad() {
       scrollTriggerFun
     );
 
-    chosenLink.addEventListener("click", chosenHandler);
-    chosenLink.addEventListener("click", function () {
+    const chosenHoverObjs = hoverHandlers(chosenImg, chosenLink);
+    const unChosenHoverObjs = hoverHandlers(unChosenImg, unChosenLink);
+
+    function killAllAnimations() {
+      chosenHoverObjs.hoverOnImgValues.hoverOnImgGsap.kill();
+      chosenHoverObjs.hoverOnImgValues.hoverOnTxtGsap.kill();
+      chosenHoverObjs.hoverOnTxtValues.hoverOnImgGsap.kill();
+      chosenHoverObjs.hoverOnTxtValues.hoverOnTxtGsap.kill();
+
+      unChosenHoverObjs.hoverOnImgValues.hoverOnImgGsap.kill();
+      unChosenHoverObjs.hoverOnImgValues.hoverOnTxtGsap.kill();
+      unChosenHoverObjs.hoverOnTxtValues.hoverOnImgGsap.kill();
+      unChosenHoverObjs.hoverOnTxtValues.hoverOnTxtGsap.kill();
+
+      chosenImg.removeEventListener("mouseenter", chosenHoverObjs.hoverOnImgValues.mouseEnterFun);
+      chosenImg.removeEventListener("mouseleave", chosenHoverObjs.hoverOnImgValues.mouseleaveFun);
+      chosenLink.removeEventListener("mouseenter", chosenHoverObjs.hoverOnTxtValues.mouseEnterFun);
+      chosenLink.removeEventListener("mouseleave", chosenHoverObjs.hoverOnTxtValues.mouseleaveFun);
+
+      unChosenImg.removeEventListener("mouseenter", unChosenHoverObjs.hoverOnImgValues.mouseEnterFun);
+      unChosenImg.removeEventListener("mouseleave", unChosenHoverObjs.hoverOnImgValues.mouseleaveFun);
+      unChosenLink.removeEventListener("mouseenter", unChosenHoverObjs.hoverOnTxtValues.mouseEnterFun);
+      unChosenLink.removeEventListener("mouseleave", unChosenHoverObjs.hoverOnTxtValues.mouseleaveFun);
+
+      chosenLink.removeEventListener("click", chosenHandler);
       unChosenLink.removeEventListener("click", unChosenHandler);
       chosenImg.removeEventListener("click", chosenHandler);
       unChosenImg.removeEventListener("click", unChosenHandler);
-    });
+    }
 
-    unChosenLink.addEventListener("click", unChosenHandler);
-    unChosenLink.addEventListener("click", function () {
-      chosenLink.removeEventListener("click", chosenHandler);
-      unChosenImg.removeEventListener("click", unChosenHandler);
-      chosenImg.removeEventListener("click", chosenHandler);
-    });
+    // once: true tells the browser to unregister the handler after its clicked
+    chosenLink.addEventListener("click", chosenHandler, {once: true});
+    chosenLink.addEventListener("click", killAllAnimations);
 
-    chosenImg.addEventListener("click", chosenHandler);
-    chosenImg.addEventListener("click", function () {
-      unChosenImg.removeEventListener("click", unChosenHandler);
-    });
+    unChosenLink.addEventListener("click", unChosenHandler, {once: true});
+    unChosenLink.addEventListener("click", killAllAnimations);
 
-    unChosenImg.addEventListener("click", unChosenHandler);
-    unChosenImg.addEventListener("click", function () {
-      chosenImg.removeEventListener("click", chosenHandler);
-    });
+    chosenImg.addEventListener("click", chosenHandler, {once: true});
+    chosenImg.addEventListener("click", killAllAnimations);
 
-    mutualHover(chosenLink, chosenImg);
-    mutualHover(unChosenLink, unChosenImg);
+    unChosenImg.addEventListener("click", unChosenHandler, {once: true});
+    unChosenImg.addEventListener("click", killAllAnimations);
   }
 
   //creates and runs a function makeLinkHandler which returns a function

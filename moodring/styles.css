@@ -1288,11 +1288,11 @@ h1 {
   color: #fff;
   white-space: nowrap;
   opacity: .25;
-  animation: pulse 8s linear alternate infinite;
+  /* animation: pulse 8s linear alternate infinite; */
 }
 
 .hueRotateGlow {
-  animation: pulse 2s linear alternate infinite;
+  animation: hueRotateGlow 6s linear alternate infinite;
 }
 
 .highlight {
