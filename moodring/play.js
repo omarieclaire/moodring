@@ -282,6 +282,8 @@ function windowOnLoad() {
   beginSound.load();
   const genSound = new Audio("./sounds/genSound.mp3");
   genSound.load();
+  const sendSound = new Audio("./sounds/sendSound.mp3");
+  sendSound.load();
 
   function playSound(audio) {
     // audio.volume = 0.07;
@@ -642,7 +644,7 @@ function windowOnLoad() {
       playerState.itemSought = "peace";
       story.itemSought.push("peace");
     }
-    playSound(beginSound);
+    playSound(sendSound);
     // seekBtn.innerHTML = "received";
     document.getElementById("whatDoYouSeek").innerHTML =
       "dive deeper,<br>seeker";
@@ -650,7 +652,7 @@ function windowOnLoad() {
     seekText.classList.add("fade");
     setTimeout(function () {
       displayScrollArrow("seekBtnArrowDiv");
-    }, 1000);
+    }, 4000);
     questions3Lvl.style.display = "grid";
     spacer1.style.display = "grid";
     spacer2.style.display = "grid";
@@ -671,13 +673,13 @@ function windowOnLoad() {
     spacer7.style.display = "grid";
     bottomLvl.style.display = "grid";
     generateTracery();
-    playSound(beginSound);
+    playSound(sendSound);
     blueSwimmerFallAni();
     displayEndPoem();
     findSongBtn.classList.add("fade");
     setTimeout(function () {
       displayScrollArrow("findSongBtnArrowDiv");
-    }, 1000);
+    }, 3000);
     // findSongBtn.innerHTML = "scroll";
   }
 
@@ -777,8 +779,6 @@ function windowOnLoad() {
         chosenImageDOM,
         doNothing
       );
-
-
       const unchosenImageId = unchosenValue + "Img";
       const unchosenImageDOM = document.getElementById(unchosenImageId);
       unchosenImageDOM.classList.remove("cursorHand");
@@ -797,7 +797,7 @@ function windowOnLoad() {
 
       setTimeout(function () {
         displayScrollArrow(stateKey);
-      }, 3000);
+      }, 10000);
       // console.log(story[stateKey]);
 
 ////////////////////////////
@@ -1120,13 +1120,13 @@ function windowOnLoad() {
 
 
   function learnMoreBtnHandler(event) {
-    playSound(beginSound);
+    playSound(sendSound);
   }
   function startOverBtnHandler(event) {
-    playSound(beginSound);
+    playSound(sendSound);
   }
   function creditsBtnHandler(event) {
-    playSound(beginSound);
+    playSound(sendSound);
     creditsLvl.style.display = "grid";
   }
   learnMoreBtn.addEventListener("click", learnMoreBtnHandler);

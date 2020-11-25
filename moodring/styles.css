@@ -128,7 +128,7 @@
   border: .5px solid #c2f08e;
   padding: 7px 20px;
   margin: 4px 2px;
-  /* transition: all 1s ease 2s; */
+  transition: all 1s ease 0s;
   opacity: .75;
   border-radius: 7px;
   font-family: 'PT Mono', monospace;
