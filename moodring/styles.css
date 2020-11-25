@@ -136,6 +136,14 @@
   font-family: 'PT Mono', monospace;
 }
 
+#beginBtn, #findSongBtn {
+  z-index: 10;
+}
+
+#beginBtn:focus, #findSongBtn {
+  outline: none;
+}
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -247,6 +255,7 @@ a:hover, a:active {
   max-width: 17vw;
   padding: .3rem;
   margin: 2rem;
+  opacity: 0.7;
 }
 
 div.imageRow>a:first-child {
@@ -273,6 +282,7 @@ div.imageRow>a:last-child {
     max-width: 35vw;
     padding: .3rem;
     margin: 2rem;
+    /* opacity: 0.9; */
   }
   #finalPlantLady, #finalGreenSwimmer {
     max-width: 15vw;
@@ -413,6 +423,7 @@ div.imageRow>a:last-child {
   align-self: center;
   opacity: 0.6;
   line-height: 2rem;
+  opacity: 0.7;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
@@ -486,6 +497,10 @@ div.imageRow>a:last-child {
   animation-fill-mode: forwards;
 }
 
+.fadeIn {
+  animation: fade 5s linear 1s slidein;
+}
+
 #questionstxt1, #questionstxt2 {
   animation: fadeOut 3s ease-in-out 0s alternate infinite;
 }
@@ -537,13 +552,7 @@ div.imageRow>a:last-child {
   grid-area: arrowRow;
 }
 
-#beginBtn, #findSongBtn {
-  z-index: 10;
-}
 
-#beginBtn:focus, #findSongBtn {
-  outline: none;
-}
 
 #seekText {
   color: #ff5c56;
@@ -1282,6 +1291,10 @@ h1 {
   animation: pulse 8s linear alternate infinite;
 }
 
+.hueRotateGlow {
+  animation: pulse 2s linear alternate infinite;
+}
+
 .highlight {
   filter: hue-rotate(220deg);
 }
@@ -1309,7 +1322,16 @@ h1 {
   }
 }
 
-@keyframes glow {
+@keyframes fadeIn {
+  0% {
+    opacity: .1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes glowAndScale {
   0% {
     filter: hue-rotate(30deg);
     transform: scale(1);
@@ -1323,6 +1345,18 @@ h1 {
     filter: hue-rotate(120deg);
     transform: scale(1.3);
     /* transform:rotate(-5deg);; */
+  }
+}
+
+@keyframes hueRotateGlow {
+  0% {
+    filter: hue-rotate(30deg);
+  }
+  50% {
+    filter: hue-rotate(90deg);
+  }
+  100% {
+    filter: hue-rotate(120deg);
   }
 }
 

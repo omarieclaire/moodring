@@ -15,38 +15,21 @@ function windowOnLoad() {
     // markers: false
   });
 
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: "#beginLvl",
-      start: "bottom top", //animation starts at this point  - 20 px above the top of the trigger element
-      // end: "+=500",
-      // scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
-      // pinSpacing: false,
-      // pin: "#greenGlow",
-    },
-  });
-  // .to("#beginBtn", { y: 200 })
-  // toggleActions:"restart pause reverse reset"
-  // **options: play pause restart reverse resume reset complete reverse none
-
-  function moveArrow() {}
-
   function pushStartLvlAway() {
     return gsap
       .timeline({ repeat: 0, repeatDelay: 1, paused: true })
       .to(
         ".beginLvlRow1",
-        { scale: 0.4, opacity: 0, duration: 12, y: 200, ease: "slow" },
+        { scale: 0.4, opacity: 0, duration: 11, y: 200, ease: "slow" },
         0.4,
         "Start"
       )
       .to(
         "#beginLvlRow2",
-        { scale: 0.4, opacity: 0, duration: 12, y: 100, ease: "slow" },
+        { scale: 0.4, opacity: 0, duration: 11, y: 100, ease: "slow" },
         0.4,
         "Start"
       )
-      .to("#greenGlow", { y: 90, duration: 7, ease: "slow" }, "+=0.5");
   }
   const pushStartLvlAwayAni = pushStartLvlAway();
 
@@ -55,7 +38,7 @@ function windowOnLoad() {
       scrollTrigger: {
         trigger: "#beginLvl",
         start: "bottom top", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-        //end: "-=300", //"bottom center" means "when the bottom of the endTrigger hits the center of the scroller". "center 100px" means "when the center of the endTrigger hits 80% down from the top of the scroller"
+        end: "-=300", //"bottom center" means "when the bottom of the endTrigger hits the center of the scroller". "center 100px" means "when the center of the endTrigger hits 80% down from the top of the scroller"
         scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
         pinSpacing: false,
         onLeaveBack: function () {
@@ -106,37 +89,16 @@ function windowOnLoad() {
       .timeline({
         scrollTrigger: {
           trigger: "#beginBtn",
-          // pin: true,
           start: "1px", //animation starts at this point  - 20 px above the top of the trigger element
           end: "+=550",
           scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
-          // pin: "#seekBtn"
         },
       })
-      .from("#plantLady", { scale: 0.3, autoAlpha: 0, y: innerHeight * -0.1, ease: "back(1)" })
-      .from("#whatDoYouSeek", { scale: 0.8, autoAlpha: 0, ease: "back(1)" });
-    // .to("#seekText", { y: -60 })
-    // .to("#seekBtn", { y: -60})
+      .from("#plantLady", { scale: 0.3, autoAlpha: 0, y: innerHeight * -0.1, ease: "back(2)" })
+      .from("#whatDoYouSeek", { scale: 0.8, autoAlpha: 0, ease: "back(1)" })
+    .from("#seekText", { scale: 0.8 })
   }
-
-  function seekBtnAni() {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: "#beginBtn",
-          // pin: true,
-          start: "1px", //animation starts at this point  - 20 px above the top of the trigger element
-          end: "+=550",
-          scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
-          pinSpacing: false,
-          // pin: "#seekBtn"
-        },
-      })
-      // .to("#seekText", { y: -60 })
-      .from("#seekBtn", { y: -60 });
-  }
-
   function questions3LvlAni() {
     gsap
       .timeline({
@@ -174,7 +136,7 @@ function windowOnLoad() {
         },
       })
       // .from("#questionstxt1", { y: innerHeight, scale: 0.2, autoAlpha: 0 })
-      .to("#greenSwimmer", { y: 750, rotate: -90 });
+      .to("#greenSwimmer", { y: 600, rotate: -90 });
   }
 
   function choice1Ani() {
@@ -206,6 +168,7 @@ function windowOnLoad() {
       })
       .from(".choiceTxt", { y: 100, scale: 0.8, ease: "back(1)" });
     // .from(".imageRow", { y: 70, scale: 0.6 })
+    console.log("choice ani");
   }
 
   function blueSwimmerAni() {
@@ -220,7 +183,6 @@ function windowOnLoad() {
           // end: "+=50",
           scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
-          // pin: "#seekBtn"
         },
       })
       .from("#questionstxt", { scale: 0.4, autoAlpha: 0, ease: "back(1)" })
@@ -518,7 +480,7 @@ function windowOnLoad() {
   const darkLvl = document.getElementById("darkLvl");
   const joyLvl = document.getElementById("joyLvl");
   const outLvl = document.getElementById("outLvl");
-  const innerLvl = document.getElementById("innerLvl");
+  const inLvl = document.getElementById("inLvl");
   const findSongLvl = document.getElementById("findSongLvl");
   const poemLvl = document.getElementById("poemLvl");
   const lastLvl = document.getElementById("lastLvl");
@@ -543,7 +505,7 @@ function windowOnLoad() {
   darkLvl.style.display = "none";
   joyLvl.style.display = "none";
   outLvl.style.display = "none";
-  innerLvl.style.display = "none";
+  inLvl.style.display = "none";
   findSongLvl.style.display = "none";
   poemLvl.style.display = "none";
   lastLvl.style.display = "none";
@@ -566,7 +528,7 @@ function windowOnLoad() {
     arrowDiv.classList.add("arrow");
     arrowDiv.id = "arrow";
     const currentDiv = document.getElementById(parent);
-    console.log(parent);
+    // console.log(parent);
     currentDiv.appendChild(arrowDiv);
 
     const containerDiv = document.createElement("div");
@@ -603,7 +565,6 @@ function windowOnLoad() {
     //   displayScrollArrow("beginLvlRow3");
     // }, 1000);
     pushStartLvlAwayAni.play();
-    moveArrow();
     greenGlowAni();
     spacer0Ani();
     playerQuestionLvlAni();
@@ -611,8 +572,24 @@ function windowOnLoad() {
     // input.focus();
   }
 
+
+
+
+
   const seekText = document.getElementById("seekText");
   const seekBtn = document.getElementById("seekBtn");
+  seekBtn.style.opacity = 0.19;
+
+  function showSeekBtn(){
+    gsap.to("#seekBtn", { opacity: 1, duration: .25 });
+  }
+
+  setTimeout(function () {
+    showSeekBtn();
+  }, 10000);
+
+  seekText.addEventListener("keyup", showSeekBtn);
+
 
   seekBtn.addEventListener("click", seekBtnHandler); // add an eventlistener to the  button
   function seekBtnHandler(event) {
@@ -735,18 +712,18 @@ function windowOnLoad() {
 
   // function hoverOnChoiceImage() {
 
-  var ci = document.getElementsByClassName("choiceImage");
-  var counter;
-  for (counter = 0; counter < ci.length; counter++) {
-    const hover = gsap.to(ci[counter], {
-      scale: 1.3,
-      duration: 10,
-      paused: true,
-      ease: "Expo.easeOut",
-    });
-    ci[counter].addEventListener("mouseover", () => hover.play());
-    ci[counter].addEventListener("mouseleave", () => hover.reverse());
-  }
+  // var ci = document.getElementsByClassName("choiceImage");
+  // var counter;
+  // for (counter = 0; counter < ci.length; counter++) {
+  //   const hover = gsap.to(ci[counter], {
+  //     scale: 1.3,
+  //     duration: 10,
+  //     paused: true,
+  //     ease: "Expo.easeOut",
+  //   });
+  //   ci[counter].addEventListener("mouseover", () => hover.play());
+  //   ci[counter].addEventListener("mouseleave", () => hover.reverse());
+  // }
 
   // get all the links
   const upLink = document.getElementById("upLink");
@@ -758,7 +735,7 @@ function windowOnLoad() {
   const forestLink = document.getElementById("forestLink");
   const meadowLink = document.getElementById("meadowLink");
   const outLink = document.getElementById("outLink");
-  const innerLink = document.getElementById("innerLink");
+  const inLink = document.getElementById("inLink");
   const morningLink = document.getElementById("morningLink");
   const nightLink = document.getElementById("nightLink");
   const unfoldLink = document.getElementById("unfoldLink");
@@ -773,7 +750,7 @@ function windowOnLoad() {
   const forestImg = document.getElementById("forestImg");
   const meadowImg = document.getElementById("meadowImg");
   const outImg = document.getElementById("outImg");
-  const innerImg = document.getElementById("innerImg");
+  const inImg = document.getElementById("inImg");
   const morningImg = document.getElementById("morningImg");
   const nightImg = document.getElementById("nightImg");
   const unfoldImg = document.getElementById("unfoldImg");
@@ -858,7 +835,6 @@ function windowOnLoad() {
 
       const unchosenImageId = unchosenValue + "Img";
       const unchosenImageDOM = document.getElementById(unchosenImageId);
-      unchosenImageDOM.classList.remove("styleChoiceImage");
       unchosenImageDOM.classList.remove("cursorHand");
       unchosenImageDOM.classList.add("fade");
       // unchosenImageDOM.removeEventListener("click" );
@@ -905,18 +881,21 @@ function windowOnLoad() {
   }
 
   function singleHover(me, them) {
-    var rotateThem = gsap.to(them, { scale: 1.1, paused: true });
-    var rotateMe = gsap.to(me, { scale: 1.1, paused: true });
+    var hoverOnThem = gsap.to(them, { opacity: 1, paused: true });
+    var hoverOnMe = gsap.to(me, { opacity: 1, paused: true });
     me.addEventListener("mouseenter", function() {
-      rotateThem.play();
-      rotateMe.play();
-      // them.classList.add("highlight");
-      console.log(me);
+      hoverOnThem.play();
+      hoverOnMe.play();
+      them.classList.add("hueRotateGlow");
+      me.classList.add("hueRotateGlow");
+      // console.log(me);
     });
     me.addEventListener("mouseleave", function() {
       // them.classList.remove("highlight");
-      rotateThem.reverse();
-      rotateMe.reverse();
+      hoverOnThem.reverse();
+      hoverOnMe.reverse();
+      them.classList.remove("hueRotateGlow");
+      me.classList.remove("hueRotateGlow");
     });
   }
   function mutualHover(img, txt) {
@@ -1044,17 +1023,17 @@ function windowOnLoad() {
   );
   setupLvlHandlers(
     outLvl,
-    innerLvl,
-    "outOrInner",
+    inLvl,
+    "outOrIn",
     "out",
-    "inner",
+    "in",
     2,
     spacer4,
     choiceAni,
     outLink,
     outImg,
-    innerLink,
-    innerImg
+    inLink,
+    inImg
   );
   setupLvlHandlers(
     findSongLvl,
