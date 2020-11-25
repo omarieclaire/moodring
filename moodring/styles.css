@@ -1149,13 +1149,13 @@ h1 {
   opacity: .8;
   /* border: 5px dotted #00e8c4 */
   border-radius: 50%;
-  background-image: url(images/gem-play.png);
+  background-image: url(images/lastLvl/gem-play.png);
   background-size: cover;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
   .musicBtnContainer {
-    background-image: url(images/gem-play.png);
+    background-image: url(images/lastLvl/gem-play.png);
     width: 13rem;
     height: 13rem;
     margin: 1.5em auto;
@@ -1166,7 +1166,7 @@ h1 {
     background-size: cover;
   }
   .musicBtnContainerPlaying {
-    background-image: url(images/gem-play.png);
+    background-image: url(images/lastLvl/gem-play.png);
     width: 13rem;
     height: 13rem;
     margin: 1.5em auto;
