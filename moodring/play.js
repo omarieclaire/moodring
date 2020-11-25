@@ -55,7 +55,7 @@ function windowOnLoad() {
         scrollTrigger: {
           trigger: "#beginLvl",
           start: "center center", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-          end: "+=300", //"bottom center" means "when the bottom of the endTrigger hits the center of the scroller". "center 100px" means "when the center of the endTrigger hits 80% down from the top of the scroller"
+          end: "bottom top", //"bottom center" means "when the bottom of the endTrigger hits the center of the scroller". "center 100px" means "when the center of the endTrigger hits 80% down from the top of the scroller"
           scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
         },
@@ -70,17 +70,14 @@ function windowOnLoad() {
           // markers: true,
           trigger: "#beginLvl",
           immediateRender: false,
-          start: "1%", //animation starts at this point  - 20 px above the top of the trigger element
+          start: "bottom 80%", //animation starts at this point  - 20 px above the top of the trigger element
           endTrigger: "#plantLady",
-          end: "bottom bottom",
+          end: "bottom 100%",
           scrub: 6, // locks animation to scrollbar - can use 1, 2, 3 etc
           toggleActions: "restart pause reverse pause", // onEntry onLeaving onReEntry
           pinSpacing: false,
-          // from: “center”,
-          // pin: "#greenGlow"
         },
       })
-      // .to("#arrow", {hh y: 350, scale: 0, opacity: 0})
       .to("#greenGlow", { y: innerHeight * 0.7, rotate: 180, ease: "back(1)" });
   }
 
@@ -88,9 +85,9 @@ function windowOnLoad() {
     gsap
       .timeline({
         scrollTrigger: {
-          trigger: "#beginBtn",
-          start: "1px", //animation starts at this point  - 20 px above the top of the trigger element
-          end: "+=550",
+          trigger: "#playerQuestionLvl",
+          start: "top center", //animation starts at this point  - 20 px above the top of the trigger element
+          end: "30%",
           scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
         },
@@ -146,7 +143,7 @@ function windowOnLoad() {
     gsap.from(txt, {
       y: 200,
       scale: 0.8,
-      duration: 5,
+      duration: 9,
       ease: "back(1)",
       onComplete: runWhenComplete,
     });
@@ -157,21 +154,19 @@ function windowOnLoad() {
       .timeline({
         scrollTrigger: {
           trigger: "#spacer5",
-          // pin: true,
-          start: "center top", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-          // endtrigger: "#plantLady",
-          end: "top bottom",
-          // end: "+=50",
+          start: "top top", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
+          // endtrigger: "#poemLvl",
+          end: "top center",
           scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
         },
       })
       .from("#questionstxt", { scale: 0.4, autoAlpha: 0, ease: "back(1)" })
       .from("#blueSwimmer", {
-        y: 100,
+        y: 50,
         scale: 0.4,
         autoAlpha: 0,
-        rotate: 90,
+        rotate: 180,
         ease: "back(1)",
       });
   }
@@ -183,18 +178,18 @@ function windowOnLoad() {
           trigger: "#spacer5",
           // pin: true,
           start: "center top", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-          // endtrigger: "#plantLady",
-          // end: "bottom bottom",
+          endtrigger: "#poemLvl",
+          end: "top center",
           // end: "+=950",
           endTrigger: "#displayQuestionRow",
           end: "top center",
-          scrub: 2, // locks animation to scrollbar - can use 1, 2, 3 etc
+          scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
 
           pinSpacing: false,
           // pin: "#seekBtn"
         },
       })
-      .to("#blueSwimmer", { y: 750, rotate: -360, scale: 0.75 });
+      .to("#blueSwimmer", { y: innerHeight*2, rotate: -360});
     // .to("#blueSwimmer", { y: 750, rotate: -90 });
   }
 
@@ -218,7 +213,7 @@ function windowOnLoad() {
       .from("#poemLine1", { y: 100, autoAlpha: 0, scale: 0.8 })
       .from("#poemLine2", { y: 100, autoAlpha: 0, scale: 0.8 })
       .from("#poemLine3", { y: 100, autoAlpha: 0, scale: 0.8 })
-      .from("#finalplantLady", { y: 40, autoAlpha: 0, scale: 0.2 });
+      // .from("#finalplantLady", { y: 40, autoAlpha: 0, scale: 0.2 });
   }
 
   function doNothing() {

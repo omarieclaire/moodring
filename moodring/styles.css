@@ -414,7 +414,7 @@ div.imageRow>a:last-child {
 }
 
 #plantLady, #blueSwimmer, #greenSwimmer, #finalPlantLady, #finalGreenSwimmer {
-  animation: colourShift 3s ease-in-out 0s alternate infinite;
+  animation: colourShift 4s ease-in-out 0s alternate infinite;
 }
 
 #seatedLadyLHvr, #seatedLadyRHvr, #seatedLadyCHvr {
@@ -1380,13 +1380,13 @@ h1 {
 
 @keyframes colourShift {
   0% {
-    filter: hue-rotate(30deg);
+    filter: hue-rotate(0);
   }
   50% {
-    filter: hue-rotate(90deg);
+    filter: hue-rotate(80deg);
   }
   100% {
-    filter: hue-rotate(120deg);
+    filter: hue-rotate(0deg);
   }
 }
 
