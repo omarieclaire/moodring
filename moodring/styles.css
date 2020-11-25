@@ -419,8 +419,8 @@ div.imageRow>a:last-child {
 }
 
 .cursorHand:hover {
-  cursor: -webkit-grabbing;
-  cursor: grab;
+  cursor: pointer;
+  /* cursor: grab; */
 }
 
 .choiceTxt, .choice {

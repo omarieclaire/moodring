@@ -142,7 +142,6 @@ function windowOnLoad() {
   }
 
   function choiceAni(lvl, txt, image, runWhenComplete) {
-    
     gsap.to(image, { scale: 1.7, duration: 6});
     gsap.from(txt, {
         y: 200,
@@ -757,26 +756,28 @@ function windowOnLoad() {
     function linkHandler(event) {
       event.preventDefault();
       playSound(genSound);
+
       const chosenImageId = chosenValue + "Img";
       const chosenImageDOM = document.getElementById(chosenImageId);
       chosenImageDOM.classList.remove("cursorHand");
-      chosenImageDOM.classList.add("glow");
+
       const chosenTextId = stateKey + "Text";
       const textDom = document.getElementById(chosenTextId);
 
       const chosenTextPhrase = chosenValue + "Link";
       const textPhrase = document.getElementById(chosenTextPhrase);
 
-      function scrollTriggerCallback() {
+      // function scrollTriggerCallback() {
         textDom.innerHTML = textPhrase.innerHTML;
         // textDom.classList.add("glow");
-      }
+      // }
       scrollTriggerFun(
         textDom,
         textPhrase,
         chosenImageDOM,
-        scrollTriggerCallback
+        doNothing
       );
+
 
       const unchosenImageId = unchosenValue + "Img";
       const unchosenImageDOM = document.getElementById(unchosenImageId);
@@ -798,6 +799,10 @@ function windowOnLoad() {
         displayScrollArrow(stateKey);
       }, 3000);
       // console.log(story[stateKey]);
+
+////////////////////////////
+/////// ?????? town  ////////
+////////////////////////////
 
       // console.log(JSON.stringify(playerState));
       if (level === 1) {
@@ -829,20 +834,20 @@ function windowOnLoad() {
 /////// hover town  ////////
 ////////////////////////////
 
-  function hoverOnChosenImg(chosenImg, chosenLink) {
+  function hoverOnChosenImg(chosenImg, chosenPhrase) {
     var hoverOnImg = gsap.to(chosenImg, { scale: 1.4, duration: 6, paused: true});
-    var hoverOnLink = gsap.to(chosenLink, { y: -.5, paused: true });
+    var hoverOnLink = gsap.to(chosenPhrase, { y: -.5, paused: true });
     function imgChoiceHoverAni(){
       hoverOnLink.play();
       hoverOnImg.play();
-      chosenLink.classList.add("highlight");
+      chosenPhrase.classList.add("highlight");
       chosenImg.classList.add("highlight");
     }
     chosenImg.addEventListener("mouseenter", imgChoiceHoverAni);
     function imgRemoveChoiceHoverAni(){
       hoverOnLink.reverse();
       hoverOnImg.reverse();
-      chosenLink.classList.remove("highlight");
+      chosenPhrase.classList.remove("highlight");
       chosenImg.classList.remove("highlight");
     }
     chosenImg.addEventListener("mouseleave", imgRemoveChoiceHoverAni);
@@ -881,9 +886,9 @@ function windowOnLoad() {
     return returnObj;
   }
 
-  function hoverHandlers(chosenImg, chosenLink) {
-    const hoverOnImgValues = hoverOnChosenImg(chosenImg, chosenLink);
-    const hoverOnTxtValues = hoverOnChosenTxt(chosenLink, chosenImg);
+  function hoverHandlers(chosenImg, chosenPhrase) {
+    const hoverOnImgValues = hoverOnChosenImg(chosenImg, chosenPhrase);
+    const hoverOnTxtValues = hoverOnChosenTxt(chosenPhrase, chosenImg);
     const returnObj = {
       hoverOnImgValues: hoverOnImgValues,
       hoverOnTxtValues: hoverOnTxtValues,
@@ -900,9 +905,9 @@ function windowOnLoad() {
     level,
     spacer,
     scrollTriggerFun,
-    chosenLink,
+    chosenPhrase,
     chosenImg,
-    unChosenLink,
+    unChosenPhrase,
     unChosenImg
   ) {
     const chosenHandler = makeLinkHandler(
@@ -924,8 +929,8 @@ function windowOnLoad() {
       scrollTriggerFun
     );
 
-    const chosenHoverObjs = hoverHandlers(chosenImg, chosenLink);
-    const unChosenHoverObjs = hoverHandlers(unChosenImg, unChosenLink);
+    const chosenHoverObjs = hoverHandlers(chosenImg, chosenPhrase);
+    const unChosenHoverObjs = hoverHandlers(unChosenImg, unChosenPhrase);
 
 /////////////////////////////
 ///// kill animations  //////
@@ -944,26 +949,26 @@ function windowOnLoad() {
 
       chosenImg.removeEventListener("mouseenter", chosenHoverObjs.hoverOnImgValues.mouseEnterFun);
       chosenImg.removeEventListener("mouseleave", chosenHoverObjs.hoverOnImgValues.mouseleaveFun);
-      chosenLink.removeEventListener("mouseenter", chosenHoverObjs.hoverOnTxtValues.mouseEnterFun);
-      chosenLink.removeEventListener("mouseleave", chosenHoverObjs.hoverOnTxtValues.mouseleaveFun);
+      chosenPhrase.removeEventListener("mouseenter", chosenHoverObjs.hoverOnTxtValues.mouseEnterFun);
+      chosenPhrase.removeEventListener("mouseleave", chosenHoverObjs.hoverOnTxtValues.mouseleaveFun);
 
       unChosenImg.removeEventListener("mouseenter", unChosenHoverObjs.hoverOnImgValues.mouseEnterFun);
       unChosenImg.removeEventListener("mouseleave", unChosenHoverObjs.hoverOnImgValues.mouseleaveFun);
-      unChosenLink.removeEventListener("mouseenter", unChosenHoverObjs.hoverOnTxtValues.mouseEnterFun);
-      unChosenLink.removeEventListener("mouseleave", unChosenHoverObjs.hoverOnTxtValues.mouseleaveFun);
+      unChosenPhrase.removeEventListener("mouseenter", unChosenHoverObjs.hoverOnTxtValues.mouseEnterFun);
+      unChosenPhrase.removeEventListener("mouseleave", unChosenHoverObjs.hoverOnTxtValues.mouseleaveFun);
 
-      chosenLink.removeEventListener("click", chosenHandler);
-      unChosenLink.removeEventListener("click", unChosenHandler);
+      chosenPhrase.removeEventListener("click", chosenHandler);
+      unChosenPhrase.removeEventListener("click", unChosenHandler);
       chosenImg.removeEventListener("click", chosenHandler);
       unChosenImg.removeEventListener("click", unChosenHandler);
     }
 
-    // once: true tells the browser to unregister the handler after its clicked
-    chosenLink.addEventListener("click", chosenHandler, {once: true});
-    chosenLink.addEventListener("click", killAllAnimations);
+    // once: true tells the browser to unregister the handler after it's clicked
+    chosenPhrase.addEventListener("click", chosenHandler, {once: true});
+    chosenPhrase.addEventListener("click", killAllAnimations);
 
-    unChosenLink.addEventListener("click", unChosenHandler, {once: true});
-    unChosenLink.addEventListener("click", killAllAnimations);
+    unChosenPhrase.addEventListener("click", unChosenHandler, {once: true});
+    unChosenPhrase.addEventListener("click", killAllAnimations);
 
     chosenImg.addEventListener("click", chosenHandler, {once: true});
     chosenImg.addEventListener("click", killAllAnimations);
