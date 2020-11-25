@@ -121,27 +121,37 @@
 
 .btn {
   background-color: black;
-  background: black;
   color: #c2f08e;
-  /* text-transform: uppercase; */
   text-decoration: none;
   font-size: 1rem;
   text-align: center;
   border: .5px solid #c2f08e;
   padding: 7px 20px;
   margin: 4px 2px;
-  transition: all 1s ease 2s;
+  /* transition: all 1s ease 2s; */
   opacity: .75;
   border-radius: 7px;
   font-family: 'PT Mono', monospace;
 }
 
-#beginBtn, #findSongBtn {
-  z-index: 10;
+.btn:hover {
+  color: #cf635f;
+  border-color: #cf635f;
+  transition: all 2s ease 0s;
+  border-radius: 50px;
 }
 
-#beginBtn:focus, #findSongBtn {
+.btn:focus {
+  box-shadow: 0 0 0 1px lightskyblue;
   outline: none;
+}
+
+.btn:active {
+  color: #e9a5a2;
+}
+
+#beginBtn, #findSongBtn {
+  z-index: 10;
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -1048,20 +1058,6 @@ h1 {
   .btn {
     font-size: .95rem;
   }
-}
-
-.btn:hover {
-  color: #cf635f;
-  /* background: #f6b93b; */
-  border-color: #cf635f;
-  /* padding: 1.5rem; */
-  transition: all 2s ease 0s;
-  border-radius: 50px;
-}
-
-.btn:active {
-  /* color: green; */
-  /* transform: translateY(4px); */
 }
 
 #muteBtn {
