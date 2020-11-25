@@ -141,24 +141,8 @@ function windowOnLoad() {
       .to("#greenSwimmer", { y: 600, rotate: -90 });
   }
 
-  // function choice1Ani() {
-  //   gsap
-  //     .timeline({
-  //       scrollTrigger: {
-  //         trigger: "#spacer2",
-  //         start: "center center", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-  //         end: "+=200", // bottom of the trigger element hits the top of the viewport
-  //         scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
-  //         pinSpacing: false,
-  //       },
-  //     })
-  //     .from(".choiceTxt", { y: 100, scale: 0.8, ease: "back(1)"});
-  //   // .from("#upImg", { y: 70, scale: 0.6 })
-  //   // .from("#downImg", { y: 70, scale: 0.6 })
-  // }
-
   function choiceAni(lvl, txt, image, runWhenComplete) {
-    console.log(`lvl=${lvl} txt=${txt} image=${image}`);
+
     gsap
       .timeline({
         scrollTrigger: {
@@ -175,7 +159,7 @@ function windowOnLoad() {
         ease: "back(1)",
         onComplete: runWhenComplete,
       })
-      .to(image, { y: 70, rotate: 360 });
+      .to(image, { scale: 1.7, duration: 6});
   }
 
   function blueSwimmerAni(lvl, txt, image, runWhenComplete) {
@@ -894,26 +878,22 @@ function windowOnLoad() {
   }
 
   function hoverOnChosenImg(chosenImg, chosenLink) {
-    var hoverOnImg = gsap.to(chosenImg, { rotate: 360, paused: true });
-    var hoverOnLink = gsap.to(chosenLink, { x: 30, paused: true });
+    var hoverOnImg = gsap.to(chosenImg, { scale: 1.4, duration: 6, paused: true });
+    var hoverOnLink = gsap.to(chosenLink, { y: -.5, paused: true });
     function imgChoiceHoverAni(){
       hoverOnLink.play();
       hoverOnImg.play();
-      chosenLink.classList.add("hueRotateGlow");
-      chosenImg.classList.add("hueRotateGlow");
+      chosenLink.classList.add("highlight");
+      chosenImg.classList.add("highlight");
     }
     chosenImg.addEventListener("mouseenter", imgChoiceHoverAni);
-    // adds mouseleave eventlistener to image
-    // when your cursor leaves the image reverse the animations
-    // return the img GSAP var
     function imgRemoveChoiceHoverAni(){
       hoverOnLink.reverse();
       hoverOnImg.reverse();
-      chosenLink.classList.remove("hueRotateGlow");
-      chosenImg.classList.remove("hueRotateGlow");
+      chosenLink.classList.remove("highlight");
+      chosenImg.classList.remove("highlight");
     }
     chosenImg.addEventListener("mouseleave", imgRemoveChoiceHoverAni);
-    // make a obj to store the scrolltriggers
     const returnObj = {
       hoverOnImgGsap: hoverOnImg,
       hoverOnTxtGsap: hoverOnLink,
@@ -923,32 +903,23 @@ function windowOnLoad() {
     return returnObj;
   }
 
-  // takes an image and a link
   function hoverOnChosenTxt(chosenTxt, chosenImg) {
-    // makes a var for animating said image
-    // makes a var for animating said link
-    // adds mouseover eventlistener to image
-    // when you scroll over image play animations
-    var hoverOnImg = gsap.to(chosenImg, { rotate: 360, paused: true });
-    var hoverOnTxt = gsap.to(chosenTxt, { x: 30, paused: true });
+    var hoverOnImg = gsap.to(chosenImg, { scale: 1.4, duration: 6, paused: true });
+    var hoverOnTxt = gsap.to(chosenTxt, { y: -.5, paused: true });
     function txtChoiceHoverAni() {
       hoverOnImg.play();
       hoverOnTxt.play();
-      chosenImg.classList.add("hueRotateGlow");
-      chosenTxt.classList.add("hueRotateGlow");
+      chosenImg.classList.add("highlight");
+      chosenTxt.classList.add("highlight");
     }
     chosenTxt.addEventListener("mouseenter", txtChoiceHoverAni);
-    // adds mouseleave eventlistener to image
-    // when your cursor leaves the image reverse the animations
-    // return the img GSAP var
     function txtChoiceHoverRemoveAni() {
       hoverOnImg.reverse();
       hoverOnTxt.reverse();
-      chosenImg.classList.remove("hueRotateGlow");
-      chosenTxt.classList.remove("hueRotateGlow");
+      chosenImg.classList.remove("highlight");
+      chosenTxt.classList.remove("highlight");
     }
     chosenTxt.addEventListener("mouseleave", txtChoiceHoverRemoveAni);
-    // make a obj to store the scrolltriggers
     const returnObj = {
       hoverOnImgGsap: hoverOnImg,
       hoverOnTxtGsap: hoverOnTxt,
@@ -959,13 +930,9 @@ function windowOnLoad() {
   }
 
   function hoverHandlers(chosenImg, chosenLink) {
-    // create a var to store the returned obj from hoverOnImg
     const hoverOnImgValues = hoverOnChosenImg(chosenImg, chosenLink);
-    // create a var to store the returned obj from hoverOnTxt
     const hoverOnTxtValues = hoverOnChosenTxt(chosenLink, chosenImg);
-    // make a obj to store the these objects
     const returnObj = {
-      //returns an obj which contains an obj
       hoverOnImgValues: hoverOnImgValues,
       hoverOnTxtValues: hoverOnTxtValues,
     };
