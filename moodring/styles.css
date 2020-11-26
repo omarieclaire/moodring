@@ -411,8 +411,8 @@ div.imageRow>a:last-child {
 }
 
 #greenGlow, #greenGlow2 {
-  max-width: 16vw;
-  margin-top: -1rem;
+  max-width: 20vw;
+  margin-top: -5rem;
 }
 
 #tower {

@@ -185,17 +185,37 @@ function windowOnLoad() {
     gsap
       .timeline({
         scrollTrigger: {
+          immediateRender: false,
+
           trigger: "#spacer5",
           start: "center top", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
           endTrigger: "#displayQuestionRow",
           end: "top center",
+          scrub: 7, // locks animation to scrollbar - can use 1, 2, 3 etc
+          pinSpacing: false,
+        },
+      })
+      .to("#blueSwimmer", { y: innerHeight * 2, rotate: -360, ease: "back(1)" });
+    // .to("#blueSwimmer", { y: 750, rotate: -90 });
+  }
+  
+  function blueSwimmerFinalFallAni() {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          immediateRender: false,
+          trigger: "#spacer7",
+          start: "top bottom", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
+          endTrigger: "#musicBtnContainer1",
+          end: "center center",
           scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
         },
       })
-      .to("#blueSwimmer", { y: innerHeight * 2, rotate: -360 });
+      .to("#blueSwimmer", { y: innerHeight * 3, rotate: -620, scale: .25, opacity: 0});
     // .to("#blueSwimmer", { y: 750, rotate: -90 });
   }
+
 
   function displayEndPoem() {
     gsap
@@ -662,6 +682,7 @@ function windowOnLoad() {
       lastLvl.style.display = "grid";
       spacer7.style.display = "grid";
       bottomLvl.style.display = "grid";
+      blueSwimmerFinalFallAni();
     }, 6000);
 
     setTimeout(function () {
