@@ -490,8 +490,8 @@ div.imageRow>a:last-child {
   grid-area: beginLvlRow3;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: space-around;
+    align-items: center;
 }
 
  @media (max-width: 680px), screen and (orientation: portrait) {
@@ -759,9 +759,9 @@ input {
 #creditsLvl {
   display: grid;
   grid-template-columns: .25fr 1fr .25fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 2rem;
-  grid-template-areas: ". . . " ". dLogoRow ." ". btnsRow ." ". creditsTextRow ." ". cLogoRow ." ". . .";
+  grid-template-rows: .25fr .5fr 1fr 1fr 1fr;
+  grid-gap: 0;
+  grid-template-areas: ". . . " ". dLogoRow ." ". creditsTextRow ." ". cLogoRow ." ". . .";
   height: 100vh;
   width: 100vw;
   background-position: top 0 left 0, top 0 right 0;
@@ -845,6 +845,11 @@ input {
   align-items: center;
   align-content: center;
   text-align: center;
+}
+
+#ccaLogo { 
+  margin: 2rem;
+  max-width: 15rem;
 }
 
 #btnsRow {
@@ -1373,6 +1378,10 @@ h1 {
   filter: hue-rotate(90);
   opacity: 1;
   /* background: red; */
+}
+
+.creditsPara {
+  margin: 1rem 0rem;
 }
 
 @keyframes pulse {
