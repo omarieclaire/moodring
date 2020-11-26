@@ -204,17 +204,18 @@ function windowOnLoad() {
           // end: "bottom bottom",
           // endTrigger: "poemLvl",
           // end: "bottom top",
-          end: "+=900",
+          end: innerHeight * 1.5,
           scrub: 4, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
           // pin: "#poemLvl"
         },
       })
-      .from("#poemLine1", { y: 100, autoAlpha: 0, scale: 0.8 })
-      .from("#poemLine2", { y: 100, autoAlpha: 0, scale: 0.8 })
-      .from("#poemLine3", { y: 100, autoAlpha: 0, scale: 0.8 })
+      .from("#poemLine1", { y: 50, autoAlpha: 0, scale: 0.8 })
+      .from("#poemLine2", { y: 50, autoAlpha: 0, scale: 0.8 })
+      .from("#poemLine3", { y: 50, autoAlpha: 0, scale: 0.8 })
       // .from("#finalplantLady", { y: 40, autoAlpha: 0, scale: 0.2 });
   }
+  
 
   function doNothing() {
     //nothing at all
@@ -287,16 +288,11 @@ function windowOnLoad() {
   var muteBtn = document.getElementById("muteBtn"); // get the button
   muteBtn.addEventListener("click", muteBtnHandler); // add an eventlistener to the enter button
   function muteBtnHandler(event) {
-    // console.log('pauseSound is called');
-    // console.log(`muteBtn: ${muteBtn}`);
     if (muted == true) {
-      // console.log("play audio");
       playSound(backgroundMusic);
-      // muteBtn.classList.add("mute");
       muteBtn.style.background =
         "url('images/ui/mute.png') no-repeat center center / contain";
     } else {
-      // console.log("pause audio");
       backgroundMusic.pause();
       muteBtn.style.background =
         "url('images/ui/unMute.png') no-repeat center center / contain";
@@ -305,8 +301,6 @@ function windowOnLoad() {
   }
 
   function fadeSound() {
-    console.log("facde");
-    // console.log(backgroundMusic.volume);
     if (backgroundMusic.volume > 0.01) {
       backgroundMusic.volume = Math.max(0, backgroundMusic.volume - 0.07);
       setTimeout(fadeSound, 800);
@@ -379,37 +373,17 @@ function windowOnLoad() {
 
   var story = {
     sentence: [
-      '<span id="poemLine1">What is at the bottom for you, #playerAdj# seeker?</span><br><span id="poemLine2">Are you #playerVerb#?</span><br><span id="poemLine3">What would it mean to find #itemSought#?</span>',
+      '<span id="poemLine1">You are #q1#. You #q2#. You #q3#.</span><br><span id="poemLine2">What is at the bottom for you, #playerAdj# seeker?</span><br><span id="poemLine3">What would it mean to find #itemSought#?</span>',
       // "What is at the bottom, #playerAdj# seeker? #playerDesc.capitalize# #playerVerb# in #natureDesc# #natureNoun.s#. Reaching #q2#, forever #q1#wards. "
     ],
     playerAdj: [
       // "watchful",
-      "thoughful",
+      "thoughtful",
       "curious",
       "resolute",
-      "hopeful",
+      "dearest",
       "gentle",
       "silent",
-    ],
-    natureNoun: [
-      "ocean",
-      "mountain",
-      "forest",
-      "cloud",
-      "river",
-      "tree",
-      "sky",
-      "sea",
-      "desert",
-    ],
-    playerDesc: [
-      "quietly",
-      "thoughtfully",
-      "softly",
-      "gently",
-      "curiously",
-      "firmly",
-      "tentatively",
     ],
     playerVerb: [
       "watching",
@@ -650,6 +624,9 @@ function windowOnLoad() {
     spacer1.style.display = "grid";
     spacer2.style.display = "grid";
     choice1Lvl.style.display = "grid";
+
+    // setTimeout(function () {
+    // }, 5000);
     // displayPlayerQuestion();
     questions3LvlAni();
     // choice1Ani();
@@ -660,20 +637,29 @@ function windowOnLoad() {
   findSongBtn.addEventListener("click", findSongBtnHandler);
   function findSongBtnHandler(event) {
     fadeSound();
-    spacer6.style.display = "grid";
-    poemLvl.style.display = "grid";
-    lastLvl.style.display = "grid";
-    spacer7.style.display = "grid";
-    bottomLvl.style.display = "grid";
-    generateTracery();
     playSound(sendSound);
-    blueSwimmerFallAni();
-    displayEndPoem();
+
     findSongBtn.classList.add("fade");
     setTimeout(function () {
       displayScrollArrow("findSongBtnArrowDiv");
     }, 3000);
-    // findSongBtn.innerHTML = "scroll";
+
+    spacer6.style.display = "grid";
+    poemLvl.style.display = "grid";
+    blueSwimmerFallAni();
+    generateTracery();
+    displayEndPoem();
+
+    setTimeout(function () {
+      lastLvl.style.display = "grid";
+      spacer7.style.display = "grid";
+      bottomLvl.style.display = "grid";
+    }, 6000);
+
+    setTimeout(function () {
+      displayScrollArrow("poemLine3");
+    }, 20000);
+    
   }
 
   ////////////////////////////
@@ -795,20 +781,20 @@ function windowOnLoad() {
       // console.log(JSON.stringify(playerState));
       if (level === 1) {
         playerState.q1 = chosenValue;
-        story.q1.push(chosenValue);
+        story.q1.push(textPhrase.innerHTML);
         // only re-render if they've answered all the questions
         renderplayerState(playerState);
         renderSong(playerState);
       } else if (level === 2) {
         playerState.q2 = chosenValue;
-        story.q2.push(chosenValue);
+        story.q2.push(textPhrase.innerHTML);
 
         renderplayerState(playerState);
         renderSong(playerState);
       } else if (level === 3) {
         blueSwimmerAni();
         playerState.q3 = chosenValue;
-        story.q3.push(chosenValue);
+        story.q3.push(textPhrase.innerHTML);
 
         renderplayerState(playerState);
         renderSong(playerState);
@@ -1131,24 +1117,25 @@ function setupLady(btn, lady, ladyHvr) {
 
   btn.addEventListener("mouseover", btnHvr);
   btn.addEventListener("mouseleave", btnLeave);
-}
 
-setupLady(learnMoreBtn, seatedLadyL, seatedLadyLHvr);
-setupLady(startOverBtn, seatedLadyC, seatedLadyCHvr);
-setupLady(creditsBtn, seatedLadyR, seatedLadyRHvr);
+  setupLady(learnMoreBtn, seatedLadyL, seatedLadyLHvr);
+  setupLady(startOverBtn, seatedLadyC, seatedLadyCHvr);
+  setupLady(creditsBtn, seatedLadyR, seatedLadyRHvr);
 
-function learnMoreBtnHandler(event) {
-  // playSound(sendSound);
+  function learnMoreBtnHandler(event) {
+    playSound(sendSound);
+    // window.open("https://www.debaser.ca/mood-ring", "_blank");
+  }
+  function startOverBtnHandler(event) {
+    playSound(sendSound);
+  }
+  function creditsBtnHandler(event) {
+    creditsLvl.style.display = "grid";
+    playSound(sendSound);
+  }
+  learnMoreBtn.addEventListener("click", learnMoreBtnHandler);
+  startOverBtn.addEventListener("click", startOverBtnHandler);
+  creditsBtn.addEventListener("click", creditsBtnHandler);
 }
-function startOverBtnHandler(event) {
-  // playSound(sendSound);
-}
-function creditsBtnHandler(event) {
-  // playSound(sendSound);
-  creditsLvl.style.display = "grid";
-}
-learnMoreBtn.addEventListener("click", learnMoreBtnHandler);
-startOverBtn.addEventListener("click", startOverBtnHandler);
-creditsBtn.addEventListener("click", creditsBtnHandler);
 
 window.addEventListener("load", windowOnLoad);
