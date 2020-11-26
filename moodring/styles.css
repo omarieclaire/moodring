@@ -1080,8 +1080,6 @@ input {
   }
 }
 
-
-
 #poemLine1, #poemLine2, #poemLine3 {
   display: inline-block;
   font-size: 1.2rem;
@@ -1089,6 +1087,12 @@ input {
   opacity: 0.8;
   /* line-height: 1.7rem; */
   color: #a9c983;
+}
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  #poemLine1, #poemLine2, #poemLine3 {
+    font-size: 1rem;
+  }
 }
 
 h1 {
