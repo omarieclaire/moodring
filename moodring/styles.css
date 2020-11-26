@@ -1,3 +1,62 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  scroll-behavior: smooth;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  background-color: black;
+  padding: 0;
+  margin: 0;
+  /* height:   -webkit-fill-available; */
+
+}
+
+body {
+  font-family: 'PT Mono', monospace;
+  line-height: 1;
+  letter-spacing: .25rem;
+  margin: 0;
+  font-size: 1.3rem;
+  color: #ffffff;
+  height: 100vh;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  /* min-height: 100vh; */
+  /* min-height: -webkit-fill-available; */
+}
+
+div{
+  margin-bottom:-1px;
+}
+
+div:last-of-type{
+  margin-bottom:0;
+}
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  p {
+    font-size: 1rem;
+  }
+}
+
 #loader-wrapper {
   position: fixed;
   top: 0;
@@ -116,101 +175,6 @@
     /* IE 9 */
     transform: rotate(360deg);
     /* Firefox 16+, IE 10+, Opera */
-  }
-}
-
-.btn {
-  background-color: black;
-  color: #c2f08e;
-  text-decoration: none;
-  font-size: 1rem;
-  text-align: center;
-  border: .7px solid #c2f08e;
-  padding: .5rem 1rem;
-  /* margin: 4px 2px; */
-  transition: all 1s ease 0s;
-  opacity: .75;
-  border-radius: 7px;
-  font-family: 'PT Mono', monospace;
-}
-
-.btn:hover {
-  color: #cf635f;
-  border-color: #cf635f;
-  transition: all 2s ease 0s;
-  border-radius: 50px;
-}
-
-.btn:focus {
-  box-shadow: 0 0 0 1px yellow;
-  outline: none;
-}
-
-.btn:active {
-  color: #e9a5a2;
-}
-
-#beginBtn, #findSongBtn {
-  z-index: 10;
-}
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  scroll-behavior: smooth;
-
-}
-
-/* HTML5 display-role reset for older browsers */
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-*:focus {
-  outline: none;
-}
-
-html {
-  background-color: black;
-  padding: 0;
-  margin: 0;
-  height: -webkit-fill-available;
-
-}
-
-body {
-  font-family: 'PT Mono', monospace;
-  line-height: 1;
-  letter-spacing: .25rem;
-  margin: 0;
-  font-size: 1.3rem;
-  color: #ffffff;
-  height: 100vh;
-  perspective: 1px;
-  transform-style: preserve-3d;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-}
-
-div{
-  margin-bottom:-1px;
-}
-
-/* div:last-of-type{
-  margin-bottom:0;
-} */
-
-@media (max-width: 680px), screen and (orientation: portrait) {
-  p {
-    font-size: 1rem;
   }
 }
 
@@ -1107,7 +1071,40 @@ h1 {
   display: none;
 }
 
+.btn {
+  background-color: black;
+  color: #c2f08e;
+  text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
+  border: .7px solid #c2f08e;
+  padding: .5rem 1rem;
+  /* margin: 4px 2px; */
+  transition: all 1s ease 0s;
+  opacity: .75;
+  border-radius: 7px;
+  font-family: 'PT Mono', monospace;
+}
 
+.btn:hover {
+  color: #cf635f;
+  border-color: #cf635f;
+  transition: all 2s ease 0s;
+  border-radius: 50px;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 1px yellow;
+  outline: none;
+}
+
+.btn:active {
+  color: #e9a5a2;
+}
+
+#beginBtn, #findSongBtn {
+  z-index: 10;
+}
 
 .beginBtnToScroll {
   border: .0px solid black;
