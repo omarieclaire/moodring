@@ -282,22 +282,30 @@ function windowOnLoad() {
   backgroundMusic.loop = true;
 
   const beginSound = new Audio("./sounds/beginSound.mp3");
+  beginSound.preload = 'auto';
   beginSound.load();
   const genSound = new Audio("./sounds/genSound.mp3");
+  genSound.preload = 'auto';
   genSound.load();
   const sendSound = new Audio("./sounds/sendSound.mp3");
-  sendSound.load();
+  sendSound.preload = 'auto';
 
   function playSound(audio) {
+    var currSong = audio.cloneNode();
+    currSong.play();
+  }
+
+  function playBackgroundMusic(audio) {
     audio.play();
   }
+  
 
   var muted = false;
   var muteBtn = document.getElementById("muteBtn"); // get the button
   muteBtn.addEventListener("click", muteBtnHandler); // add an eventlistener to the enter button
   function muteBtnHandler(event) {
     if (muted == true) {
-      playSound(backgroundMusic);
+      playBackgroundMusic(backgroundMusic);
       muteBtn.style.background =
         "url('images/ui/mute.png') no-repeat center center / contain";
     } else {
@@ -312,8 +320,10 @@ function windowOnLoad() {
     if (backgroundMusic.volume > 0.01) {
       backgroundMusic.volume = Math.max(0, backgroundMusic.volume - 0.07);
       setTimeout(fadeSound, 800);
+      console.log("fademusic")
     } else {
       backgroundMusic.pause();
+      console.log("pausemusic")
     }
   }
 
@@ -574,7 +584,7 @@ function windowOnLoad() {
     spacer0.style.display = "grid";
     muteBtn.style.display = "block";
     playSound(beginSound);
-    playSound(backgroundMusic);
+    playBackgroundMusic(backgroundMusic);
     beginBtn.classList.add("fade");
     setTimeout(function () {
       displayScrollArrow("beginBtnArrowDiv");
@@ -778,12 +788,7 @@ function windowOnLoad() {
       const unchosenImageDOM = document.getElementById(unchosenImageId);
       unchosenImageDOM.classList.remove("cursorHand");
       unchosenImageDOM.classList.add("fade");
-      // unchosenImageDOM.removeEventListener("click" );
-
-      // const unchosenTextId = unchosenValue+"Link";
-      // const unchosenTextDOM = document.getElementById(unchosenTextId);
-      // unchosenTextDOM.classList.add('fade');
-
+      
       link.style.display = "grid";
       spacer.style.display = "grid";
 
@@ -793,7 +798,6 @@ function windowOnLoad() {
       setTimeout(function () {
         displayScrollArrow(stateKey);
       }, 10000);
-      // console.log(story[stateKey]);
 
       ////////////////////////////
       /////// ?????? town  ////////
