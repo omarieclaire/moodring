@@ -1073,6 +1073,14 @@ input {
   width: 70vw;
 }
 
+@media (max-width: 680px), screen and (orientation: portrait) {
+  #displayQuestionRow {
+    margin: 10rem 0 2rem 0;
+  }
+}
+
+
+
 #poemLine1, #poemLine2, #poemLine3 {
   display: inline-block;
   font-size: 1.2rem;
