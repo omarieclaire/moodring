@@ -125,9 +125,9 @@
   text-decoration: none;
   font-size: 1rem;
   text-align: center;
-  border: .5px solid #c2f08e;
-  padding: 7px 20px;
-  margin: 4px 2px;
+  border: .7px solid #c2f08e;
+  padding: .5rem 1rem;
+  /* margin: 4px 2px; */
   transition: all 1s ease 0s;
   opacity: .75;
   border-radius: 7px;
@@ -142,7 +142,7 @@
 }
 
 .btn:focus {
-  box-shadow: 0 0 0 1px lightskyblue;
+  box-shadow: 0 0 0 1px yellow;
   outline: none;
 }
 
