@@ -635,7 +635,7 @@ input {
   grid-gap: 0px;
   grid-template-areas: "beginLvlRow1 beginLvlRow1 beginLvlRow1" "beginLvlRow2 beginLvlRow2 beginLvlRow2" "beginLvlRow3 beginLvlRow3 beginLvlRow3";
   /* ". highlight ."; */
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
   background: url(images/walls/0l.png), url(images/walls/0r.png);
   background-position: top 0 left 0, top 0 right 0;
@@ -883,7 +883,7 @@ input {
 
 @media (max-width: 680px), screen and (orientation: portrait) {
   #beginLvl {
-    height: 100vh;
+    /* height: 100vh; */
     width: 100vw;
     background: url(images/walls/0lm.png), url(images/walls/0rm.png);
     background-position: top 0 left 0, top 0 right 0;
