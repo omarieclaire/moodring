@@ -232,7 +232,7 @@ div{
 }
 
 a:link, a:visited {
-  color: #799be2;
+  color: #c0d5ff;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -398,7 +398,7 @@ div.imageRow>a:last-child {
 
 @media (max-width: 680px), screen and (orientation: portrait) {
   #titling {
-    max-width: 14rem;
+    max-width: 8rem;
   }
 }
 
@@ -416,7 +416,7 @@ div.imageRow>a:last-child {
 }
 
 #tower {
-  max-width: 80vw;
+  max-width: 70vw;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
@@ -472,7 +472,7 @@ div.imageRow>a:last-child {
   }
 
   #climber {
-    margin-top: -5rem;
+    margin-top: -3.5rem;
   }
 
 
@@ -487,7 +487,7 @@ div.imageRow>a:last-child {
   align-items: center;
   align-content: center;
   justify-content: space-around;
-  margin: 4rem 0 -2rem 0;
+  /* margin: 4rem 0 -2rem 0; */
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
