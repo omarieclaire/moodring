@@ -139,14 +139,24 @@ function windowOnLoad() {
   }
 
   function choiceAni(lvl, txt, image, runWhenComplete) {
+    const clone = txt.cloneNode(true);
+    function onComplete() {
+      lvl.parentNode.appendChild(clone);
+      lvl.remove();
+    }
     gsap.to(image, { scale: 1.7, duration: 6 });
-    gsap.from(txt, {
-      y: 200,
-      scale: 0.8,
-      duration: 9,
-      ease: "back(1)",
-      onComplete: runWhenComplete,
-    });
+    gsap
+      .timeline()
+      .to(lvl, {autoAlpha: 0, onComplete: onComplete})
+      .from(clone, {
+        y: 200,
+        scale: 0.8,
+        duration: 9,
+        autoAlpha: 1,
+        ease: "back(1)",
+        onComplete: runWhenComplete
+        // toggleClass: glowAndScale
+      });
   }
 
   function blueSwimmerAni(lvl, txt, image, runWhenComplete) {
@@ -279,7 +289,6 @@ function windowOnLoad() {
   sendSound.load();
 
   function playSound(audio) {
-    // audio.volume = 0.07;
     audio.play();
   }
 
@@ -745,11 +754,25 @@ function windowOnLoad() {
 
       const chosenTextPhrase = chosenValue + "Link";
       const textPhrase = document.getElementById(chosenTextPhrase);
+      const clonedTextPhrase = textPhrase.cloneNode(true);
 
-      // function scrollTriggerCallback() {
-      textDom.innerHTML = textPhrase.innerHTML;
-      // textDom.classList.add("glow");
-      // }
+      function scrollTriggerCallback() {
+        console.log("Scroll Trigger callback");
+
+      }
+      // textDom.innerHTML = textPhrase.innerHTML;
+
+        //textDom.classList.add("glow");
+
+        // function whenDone() {
+        //   textDom.parentElement.appendChild(clonedTextPhrase);
+        //   textDom.remove();
+        // }
+        // gsap
+        //   .timeline()
+        //   .to(textDom, { autoAlpha: 0, ease: "back(1)", onComplete: whenDone , duration: 3})
+        //   .to(clonedTextPhrase, { autoAlpha: 1, ease: "back(1)", duration: 3});
+
       scrollTriggerFun(textDom, textPhrase, chosenImageDOM, doNothing);
       const unchosenImageId = unchosenValue + "Img";
       const unchosenImageDOM = document.getElementById(unchosenImageId);

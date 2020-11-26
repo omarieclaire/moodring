@@ -1309,6 +1309,10 @@ h1 {
    animation: hueRotateGlow 6s linear alternate infinite;
 }
 
+.glowAndScale {
+  animation: glowAndScale 6s linear alternate infinite;
+}
+
 .highlight {
   filter: hue-rotate(90);
   opacity: 1;
