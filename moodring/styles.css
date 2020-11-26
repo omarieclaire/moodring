@@ -203,9 +203,10 @@ body {
 div{
   margin-bottom:-1px;
 }
-div:last-of-type{
+
+/* div:last-of-type{
   margin-bottom:0;
-}
+} */
 
 @media (max-width: 680px), screen and (orientation: portrait) {
   p {
@@ -392,7 +393,13 @@ div.imageRow>a:last-child {
 }
 
 #titling {
-  width: 13rem;
+  max-width: 13rem;
+}
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  #titling {
+    max-width: 14rem;
+  }
 }
 
 #creaturesL {
@@ -461,10 +468,16 @@ div.imageRow>a:last-child {
 
 @media (max-width: 680px), screen and (orientation: portrait) {
   #climber, #swimmer {
-    max-width: 30vw;
+    max-width: 35vw;
   }
+
+  #climber {
+    margin-top: -5rem;
+  }
+
+
   #creaturesL, #creaturesR {
-    max-width: 23vw;
+    max-width: 2rem;
   }
 }
 
@@ -477,6 +490,12 @@ div.imageRow>a:last-child {
   margin: 4rem 0 -2rem 0;
 }
 
+@media (max-width: 680px), screen and (orientation: portrait) {
+  .beginLvlRow1 {
+  margin: 2rem 0 -11rem 0;
+  }
+}
+
 .beginLvlRow2 {
   grid-area: beginLvlRow2;
   /* grid-row: 1/4; */
@@ -484,6 +503,12 @@ div.imageRow>a:last-child {
   align-items: center;
   align-content: center;
   justify-content: center;
+}
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  .beginLvlRow2 {
+  padding: 0;
+  }
 }
 
 .pulse {
@@ -507,6 +532,7 @@ div.imageRow>a:last-child {
     justify-content: space-around;
     align-self: inherit;
     z-index: 99;
+    margin-bottom: 2rem;
   }
 }
 
@@ -638,12 +664,11 @@ input {
   grid-template-rows: .75fr 1fr .75fr;
   grid-gap: 0px;
   grid-template-areas: "beginLvlRow1 beginLvlRow1 beginLvlRow1" "beginLvlRow2 beginLvlRow2 beginLvlRow2" "beginLvlRow3 beginLvlRow3 beginLvlRow3";
-  /* ". highlight ."; */
   height: 100vh;
   width: 100vw;
   background: url(images/walls/0l.png), url(images/walls/0r.png);
   background-position: bottom 0 left 0, bottom 0 right 0;
-  background-size: auto 100%, auto 100%;
+  background-size: auto 100vh, auto 100vh;
   background-repeat: no-repeat, no-repeat;
 }
 
@@ -887,6 +912,7 @@ input {
 
 @media (max-width: 680px), screen and (orientation: portrait) {
   #beginLvl {
+    grid-template-rows: .5fr 1fr .5fr;
     height: 100vh;
     width: 100vw;
     background: url(images/walls/0lm.png), url(images/walls/0rm.png);
