@@ -159,7 +159,7 @@ function windowOnLoad() {
       });
   }
 
-  function blueSwimmerAni(lvl, txt, image, runWhenComplete) {
+  function blueSwimmerEnterAni(lvl, txt, image, runWhenComplete) {
     gsap
       .timeline({
         scrollTrigger: {
@@ -167,7 +167,7 @@ function windowOnLoad() {
           start: "top top", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
           // endtrigger: "#poemLvl",
           end: "top center",
-          scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
+          scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
         },
       })
@@ -186,17 +186,11 @@ function windowOnLoad() {
       .timeline({
         scrollTrigger: {
           trigger: "#spacer5",
-          // pin: true,
           start: "center top", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-          endtrigger: "#poemLvl",
-          end: "top center",
-          // end: "+=950",
           endTrigger: "#displayQuestionRow",
           end: "top center",
           scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
-
           pinSpacing: false,
-          // pin: "#seekBtn"
         },
       })
       .to("#blueSwimmer", { y: innerHeight * 2, rotate: -360 });
@@ -208,16 +202,12 @@ function windowOnLoad() {
       .timeline({
         scrollTrigger: {
           trigger: "#spacer6",
-          // pin: true,
           start: "top bottom", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-          // endtrigger: "#plantLady",
-          // end: "bottom bottom",
           // endTrigger: "poemLvl",
           // end: "bottom top",
           end: innerHeight * 1.5,
           scrub: 4, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
-          // pin: "#poemLvl"
         },
       })
       .from("#poemLine1", { y: 50, autoAlpha: 0, scale: 0.8 })
@@ -817,7 +807,7 @@ function windowOnLoad() {
         renderplayerState(playerState);
         renderSong(playerState);
       } else if (level === 3) {
-        blueSwimmerAni();
+        blueSwimmerEnterAni();
         playerState.q3 = chosenValue;
         story.q3.push(textPhrase.innerHTML);
 
