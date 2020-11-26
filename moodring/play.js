@@ -1128,13 +1128,13 @@ function windowOnLoad() {
   function setupLady(btn, lady, ladyHvr) {
     const ladyAni = gsap.to(lady, {
       opacity: 0,
-      duration: 1,
+      duration: 0,
       ease: "none",
       paused: true,
     });
     const ladyHvrAni = gsap.to(ladyHvr, {
       opacity: 1,
-      duration: 1,
+      duration: 0,
       ease: "none",
       paused: true,
     });

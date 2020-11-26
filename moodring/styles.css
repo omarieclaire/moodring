@@ -441,7 +441,7 @@ div.imageRow>a:last-child {
 }
 
 #seatedLadyLHvr, #seatedLadyRHvr, #seatedLadyCHvr {
-  animation: colourShift 3s ease-in-out 0s alternate infinite;
+  /* animation: colourShift 3s ease-in-out 0s alternate infinite; */
   opacity: 0;
   position: relative;
 }
