@@ -189,7 +189,7 @@ function windowOnLoad() {
           // pin: "#seekBtn"
         },
       })
-      .to("#blueSwimmer", { y: innerHeight*2, rotate: -360});
+      .to("#blueSwimmer", { y: innerHeight * 2, rotate: -360 });
     // .to("#blueSwimmer", { y: 750, rotate: -90 });
   }
 
@@ -212,10 +212,9 @@ function windowOnLoad() {
       })
       .from("#poemLine1", { y: 50, autoAlpha: 0, scale: 0.8 })
       .from("#poemLine2", { y: 50, autoAlpha: 0, scale: 0.8 })
-      .from("#poemLine3", { y: 50, autoAlpha: 0, scale: 0.8 })
-      // .from("#finalplantLady", { y: 40, autoAlpha: 0, scale: 0.2 });
+      .from("#poemLine3", { y: 50, autoAlpha: 0, scale: 0.8 });
+    // .from("#finalplantLady", { y: 40, autoAlpha: 0, scale: 0.2 });
   }
-  
 
   function doNothing() {
     //nothing at all
@@ -659,7 +658,6 @@ function windowOnLoad() {
     setTimeout(function () {
       displayScrollArrow("poemLine3");
     }, 20000);
-    
   }
 
   ////////////////////////////
@@ -1085,38 +1083,38 @@ function windowOnLoad() {
     cycleLink,
     cycleImg
   );
-}
 
-////////////////////////////
-////// bottom ladies  ///////
-////////////////////////////
+  ////////////////////////////
+  ////// bottom ladies  ///////
+  ////////////////////////////
 
-function setupLady(btn, lady, ladyHvr) {
-  const ladyAni = gsap.to(lady, {
-    opacity: 0,
-    duration: 1,
-    ease: "none",
-    paused: true,
-  });
-  const ladyHvrAni = gsap.to(ladyHvr, {
-    opacity: 1,
-    duration: 1,
-    ease: "none",
-    paused: true,
-  });
+  function setupLady(btn, lady, ladyHvr) {
+    const ladyAni = gsap.to(lady, {
+      opacity: 0,
+      duration: 1,
+      ease: "none",
+      paused: true,
+    });
+    const ladyHvrAni = gsap.to(ladyHvr, {
+      opacity: 1,
+      duration: 1,
+      ease: "none",
+      paused: true,
+    });
 
-  function btnHvr(event) {
-    ladyAni.play();
-    ladyHvrAni.play();
+    function btnHvr(event) {
+      ladyAni.play();
+      ladyHvrAni.play();
+    }
+
+    function btnLeave(event) {
+      ladyAni.reverse();
+      ladyHvrAni.reverse();
+    }
+
+    btn.addEventListener("mouseover", btnHvr);
+    btn.addEventListener("mouseleave", btnLeave);
   }
-
-  function btnLeave(event) {
-    ladyAni.reverse();
-    ladyHvrAni.reverse();
-  }
-
-  btn.addEventListener("mouseover", btnHvr);
-  btn.addEventListener("mouseleave", btnLeave);
 
   setupLady(learnMoreBtn, seatedLadyL, seatedLadyLHvr);
   setupLady(startOverBtn, seatedLadyC, seatedLadyCHvr);
