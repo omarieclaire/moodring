@@ -186,7 +186,6 @@ function windowOnLoad() {
       .timeline({
         scrollTrigger: {
           immediateRender: false,
-
           trigger: "#spacer5",
           start: "center top", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
           endTrigger: "#displayQuestionRow",
@@ -683,7 +682,7 @@ function windowOnLoad() {
       spacer7.style.display = "grid";
       bottomLvl.style.display = "grid";
       blueSwimmerFinalFallAni();
-    }, 6000);
+    }, 500);
 
     setTimeout(function () {
       displayScrollArrow("poemLine3");
