@@ -88,8 +88,8 @@ function windowOnLoad() {
       .timeline({
         scrollTrigger: {
           trigger: "#playerQuestionLvl",
-          start: "top center", //animation starts at this point  - 20 px above the top of the trigger element
-          end: "40%",
+          start: "top 80%", //animation starts at this point  - 20 px above the top of the trigger element
+          end: "top 10%",
           scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
           pinSpacing: false,
         },

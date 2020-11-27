@@ -634,7 +634,7 @@ input {
 
 @media (max-width: 680px), screen and (orientation: portrait) {
   #seekText {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     width: 12rem;
     height: 3rem;
   }
@@ -1122,7 +1122,7 @@ h1 {
 }
 
 .btn, input[type=submit] {
-  background-color: black;
+  background-color: black !important;
   color: #c2f08e;
   text-decoration: none;
   font-size: 1rem;
@@ -1134,6 +1134,12 @@ h1 {
   opacity: .75;
   border-radius: 7px;
   font-family: 'PT Mono', monospace;
+}
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  .btn {
+    font-size: .85rem;
+}
 }
 
 .btn:hover, input[type=submit]:hover {
@@ -1157,14 +1163,15 @@ h1 {
 }
 
 input[type=submit] {
+  font-size: .85rem;
   height: unset;
   width: 5rem;
   background-color: black;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
-  .btn, input[type=submit]:focus {
-    font-size: .95rem;
+  .input[type=submit]:focus {
+    font-size: .55rem;
   }
 }
 
