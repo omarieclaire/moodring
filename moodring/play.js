@@ -49,19 +49,19 @@ function windowOnLoad() {
   }
   bringBack();
 
-  function spacer0Ani() {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: "#beginLvl",
-          start: "center center", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-          end: "bottom top", //"bottom center" means "when the bottom of the endTrigger hits the center of the scroller". "center 100px" means "when the center of the endTrigger hits 80% down from the top of the scroller"
-          scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
-          pinSpacing: false,
-        },
-      })
-      .from("#spacer0", { opacity: 0 });
-  }
+  // function spacer0Ani() {
+  //   gsap
+  //     .timeline({
+  //       scrollTrigger: {
+  //         trigger: "#beginLvl",
+  //         start: "center center", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
+  //         end: "bottom top", //"bottom center" means "when the bottom of the endTrigger hits the center of the scroller". "center 100px" means "when the center of the endTrigger hits 80% down from the top of the scroller"
+  //         scrub: 3, // locks animation to scrollbar - can use 1, 2, 3 etc
+  //         pinSpacing: false,
+  //       },
+  //     })
+  //     .from("#spacer0", { opacity: 0 });
+  // }
 
   function greenGlowAni() {
     gsap
@@ -607,7 +607,7 @@ function windowOnLoad() {
     function showScrollText() {
       const img = new Image();
       img.src = "images/beginLvl/scrollText.png";
-      img.id = "scrollText"
+      img.id = "scrollText";
       img.setAttribute("draggable", "false");
       img.setAttribute("class", "image");
       document.getElementById("scrollWordDiv").appendChild(img);
@@ -628,7 +628,7 @@ function windowOnLoad() {
     // }, 1000);
     pushStartLvlAwayAni.play();
     greenGlowAni();
-    spacer0Ani();
+    // spacer0Ani();
     playerQuestionLvlAni();
     // var input = document.getElementById('seekText');
     // input.focus();

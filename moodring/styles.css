@@ -471,7 +471,7 @@ div.imageRow>a:last-child {
 
 @media (max-width: 680px), screen and (orientation: portrait) {
   .beginLvlRow1 {
-  margin: 2rem 0 -11rem 0;
+  margin: 1rem 0 -11rem 0;
   }
 }
 
