@@ -1,3 +1,5 @@
+"use strict";
+
 function windowOnLoad() {
   setTimeout(function () {
     document.body.classList.add("loaded");
@@ -346,8 +348,6 @@ function windowOnLoad() {
   ////////////////////////////
 
   (function (d) {
-    "use strict";
-
     function makeAudioBtn(id, containerId, audioPlayerId) {
       var test = true;
       var btn = d.querySelector(id);
