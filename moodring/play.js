@@ -163,6 +163,7 @@ function windowOnLoad() {
     gsap
       .timeline({
         scrollTrigger: {
+          // immediateRender: false,
           trigger: "#spacer5",
           start: "top top", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
           // endtrigger: "#poemLvl",
@@ -171,12 +172,11 @@ function windowOnLoad() {
           pinSpacing: false,
         },
       })
-      .from("#questionstxt", { scale: 0.4, autoAlpha: 0, ease: "back(1)" })
+      .from("#questionstxt", { scale: 0.6, autoAlpha: 0, ease: "back(.5)" })
       .from("#blueSwimmer", {
-        y: 50,
         scale: 0.4,
         autoAlpha: 0,
-        rotate: 180,
+        rotate: 90,
         ease: "back(1)",
       });
   }
@@ -185,34 +185,32 @@ function windowOnLoad() {
     gsap
       .timeline({
         scrollTrigger: {
-          immediateRender: false,
+          // immediateRender: false,
           trigger: "#spacer5",
           start: "center top", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
           endTrigger: "#displayQuestionRow",
           end: "top center",
-          scrub: 7, // locks animation to scrollbar - can use 1, 2, 3 etc
-          pinSpacing: false,
+          scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
+          // pinSpacing: false,
         },
       })
-      .to("#blueSwimmer", { y: innerHeight * 2, rotate: -360, ease: "back(1)" });
-    // .to("#blueSwimmer", { y: 750, rotate: -90 });
+      .to("#blueSwimmer", { y: innerHeight * 1.3, rotate: -360, ease: "back(2)" })
   }
   
   function blueSwimmerFinalFallAni() {
     gsap
       .timeline({
         scrollTrigger: {
-          immediateRender: false,
+          // immediateRender: false,
           trigger: "#spacer7",
           start: "top bottom", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
           endTrigger: "#musicBtnContainer1",
           end: "center center",
-          scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
-          pinSpacing: false,
+          scrub: 2, // locks animation to scrollbar - can use 1, 2, 3 etc
+          // pinSpacing: false,
         },
       })
       .to("#blueSwimmer", { y: innerHeight * 3, rotate: -620, scale: .25, opacity: 0});
-    // .to("#blueSwimmer", { y: 750, rotate: -90 });
   }
 
 
