@@ -197,32 +197,32 @@ function windowOnLoad() {
         },
       })
       .to("#blueSwimmer", {
-        y: innerHeight * 1.3,
+        y: innerHeight * 1.4,
         rotate: -360,
         ease: "back(2)",
       });
   }
 
-  function blueSwimmerFinalFallAni() {
-    gsap
-      .timeline({
-        scrollTrigger: {
-          // immediateRender: false,
-          trigger: "#spacer7",
-          start: "top bottom", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
-          endTrigger: "#musicBtnContainer1",
-          end: "center center",
-          scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
-          // pinSpacing: false,
-        },
-      })
-      .to("#blueSwimmer", {
-        y: innerHeight * 3,
-        rotate: -620,
-        scale: 0.5,
-        opacity: 0,
-      });
-  }
+  // function blueSwimmerFinalFallAni() {
+  //   gsap
+  //     .timeline({
+  //       scrollTrigger: {
+  //         // immediateRender: false,
+  //         trigger: "#spacer7",
+  //         start: "top bottom", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
+  //         endTrigger: "#musicBtnContainer1",
+  //         end: "center center",
+  //         scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
+  //         // pinSpacing: false,
+  //       },
+  //     })
+  //     .to("#blueSwimmer", {
+  //       y: innerHeight * 3,
+  //       rotate: -620,
+  //       scale: 0.5,
+  //       opacity: 0,
+  //     });
+  // }
 
   function displayEndPoem() {
     gsap
@@ -707,7 +707,7 @@ function windowOnLoad() {
       lastLvl.style.display = "grid";
       spacer7.style.display = "grid";
       bottomLvl.style.display = "grid";
-      blueSwimmerFinalFallAni();
+      // blueSwimmerFinalFallAni();
     }, 500);
 
     setTimeout(function () {
