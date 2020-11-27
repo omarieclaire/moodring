@@ -1159,6 +1159,7 @@ h1 {
 input[type=submit] {
   height: unset;
   width: 5rem;
+  background-color: black;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
