@@ -448,10 +448,19 @@ function windowOnLoad() {
     itemSought: [],
   };
 
+  function randomArrayItem(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
   function generateTracery() {
-    var grammar = tracery.createGrammar(story);
-    var result = grammar.flatten("#sentence#");
-    document.getElementById("generatorTxt").innerHTML = result;
+    var str = story.sentence[0];
+    str = str.replace('#q1#', story.q1[0]);
+    str = str.replace('#q2#', story.q2[0]);
+    str = str.replace('#q3#', story.q3[0]);
+    str = str.replace('#itemSought#', story.itemSought[0]);
+    var randomItem = randomArrayItem(story.playerAdj);
+    str = str.replace('#playerAdj#', randomItem);
+    document.getElementById("generatorTxt").innerHTML = str;
   }
 
   ////////////////////////////
