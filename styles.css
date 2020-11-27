@@ -8,23 +8,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   scroll-behavior: smooth;
 }
 
-#statuspanel[type="overLink"] #statuspanel-label {
-  display:none!important;
- }
- Other messages include these:
- 
- #statuspanel[type="status"] #statuspanel-label[value^="Look"],
- #statuspanel[type="status"] #statuspanel-label[value^="Connect"],
- #statuspanel[type="status"] #statuspanel-label[value^="Send"],
- #statuspanel[type="status"] #statuspanel-label[value^="Transfer"],
- #statuspanel[type="status"] #statuspanel-label[value^="Read"],
- #statuspanel[type="status"] #statuspanel-label[value^="Wrote"],
- #statuspanel[type="status"] #statuspanel-label[value^="Wait"],
- #statuspanel[type="status"] #statuspanel-label[value*="TLS handshake"],
- #statuspanel[type="status"] #statuspanel-label[value*="FTP transaction"] {
-  display:none!important;
- }
-
 /* HTML5 display-role reset for older browsers */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -40,7 +23,6 @@ html {
   padding: 0;
   margin: 0;
   /* height:   -webkit-fill-available; */
-
 }
 
 body {
@@ -60,12 +42,12 @@ body {
   /* min-height: -webkit-fill-available; */
 }
 
-div{
-  margin-bottom:-1px;
+div {
+  margin-bottom: -1px;
 }
 
-div:last-of-type{
-  margin-bottom:0;
+div:last-of-type {
+  margin-bottom: 0;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
@@ -81,13 +63,13 @@ div:last-of-type{
   width: 100%;
   height: 100%;
   z-index: 1000;
-  overflow:hidden;
-  background: black; 
+  overflow: hidden;
+  background: black;
 }
 
 .hidden {
   visibility: hidden;
-  overflow:hidden;
+  overflow: hidden;
   height: 100%;
 }
 
@@ -256,10 +238,10 @@ a:hover, a:active {
 
 .choiceLink {
   opacity: 0.7;
-  color:#abcb81;
+  color: #abcb81;
 }
 
-#scrollText{
+#scrollText {
   opacity: 0;
   z-index: -100;
   max-width: 10rem;
@@ -278,7 +260,6 @@ div.imageRow>a:last-child {
   .imageRow {
     flex-direction: column;
     margin: 0;
-    /* background-color: red; */
   }
   .image {
     align-self: center;
@@ -292,13 +273,8 @@ div.imageRow>a:last-child {
     margin: 0;
     opacity: .9;
   }
-
   .choiceLink {
     opacity: 1;
-  }
-
-  #finalPlantLady, #finalGreenSwimmer {
-    max-width: 15vw;
   }
   div.imageRow>a:first-child {
     margin: 0;
@@ -355,19 +331,6 @@ div.imageRow>a:last-child {
   z-index: 10;
 }
 
-#glowRow {
-  grid-area: glowRow;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  align-content: center;
-  justify-content: space-evenly;
-  align-self: flex-end;
-  z-index: -5;
-  opacity: .5;
-}
-
 #musicCreditRow {
   grid-area: musicCreditRow;
   display: flex;
@@ -420,13 +383,12 @@ div.imageRow>a:last-child {
   #greenGlow {
     max-width: 50vw;
   }
-
   #tower {
     max-width: 100vw;
   }
 }
 
-#plantLady, #blueSwimmer, #greenSwimmer, #finalPlantLady, #finalGreenSwimmer {
+#plantLady, #blueSwimmer, #greenSwimmer {
   animation: colourShift 4s ease-in-out 0s alternate infinite;
 }
 
@@ -448,8 +410,6 @@ div.imageRow>a:last-child {
     max-width: 3rem;
   }
 }
-
-
 
 .cursorHand:hover {
   cursor: pointer;
@@ -474,12 +434,9 @@ div.imageRow>a:last-child {
   #climber, #swimmer {
     max-width: 35vw;
   }
-
   #climber {
     margin-top: -3.5rem;
   }
-
-
   #creaturesL, #creaturesR {
     max-width: 2rem;
   }
@@ -496,7 +453,7 @@ div.imageRow>a:last-child {
 
 @media (max-width: 680px), screen and (orientation: portrait) {
   .beginLvlRow1 {
-  margin: 1rem 0 -11rem 0;
+    margin: 1rem 0 -11rem 0;
   }
 }
 
@@ -511,7 +468,7 @@ div.imageRow>a:last-child {
 
 @media (max-width: 680px), screen and (orientation: portrait) {
   .beginLvlRow2 {
-  padding: 0;
+    padding: 0;
   }
 }
 
@@ -524,10 +481,10 @@ div.imageRow>a:last-child {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-    align-items: center;
+  align-items: center;
 }
 
- @media (max-width: 680px), screen and (orientation: portrait) {
+@media (max-width: 680px), screen and (orientation: portrait) {
   .beginLvlRow3 {
     grid-area: beginLvlRow3;
     display: flex;
@@ -571,10 +528,10 @@ div.imageRow>a:last-child {
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
-.number {
-  letter-spacing: .55rem;
-  font-size: 1.5rem;
-}
+  .number {
+    letter-spacing: .55rem;
+    font-size: 1.5rem;
+  }
 }
 
 .textRow {
@@ -608,8 +565,6 @@ div.imageRow>a:last-child {
 .arrowRow {
   grid-area: arrowRow;
 }
-
-
 
 #seekText {
   color: #ff5c56;
@@ -782,10 +737,10 @@ input {
   height: auto;
   width: 100vw;
   margin: 0;
-  /* margin-top: -25rem; */
+  margin-top: 5rem;
   background: url(images/lastLvl/rockBottom.png);
   background-position: bottom 0 left 0;
-  background-size: auto 100%;
+  background-size:100%;
   background-repeat: no-repeat;
 }
 
@@ -885,23 +840,16 @@ input {
   }
 }
 
-#ccaLogo { 
+#ccaLogo {
   margin: 2rem;
   max-width: 15rem;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
-  #ccaLogo { 
+  #ccaLogo {
     margin: 2rem 0;
     max-width: 12rem;
   }
-}
-
-#btnsRow {
-  grid-area: btnsRow;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
 }
 
 #creditsTextRow {
@@ -989,7 +937,6 @@ input {
     background-size: auto 100%, auto 100%;
     background-repeat: no-repeat, no-repeat;
   }
-
   #poemLvl {
     height: 100vh;
     width: 100vw;
@@ -998,12 +945,10 @@ input {
     background-size: auto 100%, auto 100%;
     background-repeat: no-repeat, no-repeat;
   }
-
   #lastLvl {
     height: 100vh;
     width: 100vw;
   }
-
   #bottomLvl {
     height: 30vh;
     width: 100vw;
@@ -1140,7 +1085,7 @@ h1 {
 @media (max-width: 680px), screen and (orientation: portrait) {
   .btn {
     font-size: .85rem;
-}
+  }
 }
 
 .btn:hover, input[type=submit]:hover {
@@ -1219,15 +1164,14 @@ input[type=submit] {
   }
 }
 
-
-.creditsBtn:hover {
+.creditsBtns:hover {
   /* color: purple;
   border-color: purple;
   transition: all 1s ease 0s;
   border-radius: 50px; */
 }
 
-.creditsBtn:active {
+.creditsBtns:active {
   /* color: orange; */
   /* transform: translateY(4px); */
 }
@@ -1248,7 +1192,7 @@ input[type=submit] {
   flex-direction: column;
 }
 
-#musicGlow{
+#musicGlow {
   z-index: -50;
   /* position: relative; */
   max-width: 90vw;
@@ -1256,7 +1200,7 @@ input[type=submit] {
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
-  #musicGlow{
+  #musicGlow {
     max-width: 20rem;
     margin-bottom: -17rem;
   }
@@ -1291,7 +1235,6 @@ input[type=submit] {
   margin: 1.5em auto;
   border: 0px solid #fe827b;
   opacity: .9;
-  /* border: 5px dotted #00e8c4 */
   border-radius: 50%;
   background-image: url(images/lastLvl/gem-play.png);
   background-size: cover;
@@ -1425,7 +1368,7 @@ input[type=submit] {
   }
 }
 
-.text {
+/* .text {
   display: block;
   margin-top: 75px;
   font-size: .8rem;
@@ -1433,10 +1376,10 @@ input[type=submit] {
   white-space: nowrap;
   opacity: .25;
   /* animation: pulse 8s linear alternate infinite; */
-}
+}  */
 
 .hueRotateGlow {
-   animation: hueRotateGlow 6s linear alternate infinite;
+  animation: hueRotateGlow 6s linear alternate infinite;
 }
 
 .glowAndScale {
