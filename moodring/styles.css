@@ -387,6 +387,23 @@ div.imageRow>a:last-child {
   margin: -3rem 0 1rem 0;
 }
 
+/* findme */
+#musicGlow{
+  z-index: -50;
+  position: relative;
+  max-width: 200rem;
+  margin-bottom: -37rem;
+}
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  #musicGlow{
+    z-index: -50;
+    position: relative;
+    max-width: 20rem;
+    margin-bottom: -17rem;
+  }
+}
+
 #tower {
   max-width: 70vw;
 }

@@ -212,14 +212,14 @@ function windowOnLoad() {
           start: "top bottom", //first value relates to the trigger element, the second to the scroller itsef (the viewport)
           endTrigger: "#musicBtnContainer1",
           end: "center center",
-          scrub: 2, // locks animation to scrollbar - can use 1, 2, 3 etc
+          scrub: 5, // locks animation to scrollbar - can use 1, 2, 3 etc
           // pinSpacing: false,
         },
       })
       .to("#blueSwimmer", {
         y: innerHeight * 3,
         rotate: -620,
-        scale: 0.25,
+        scale: 0.5,
         opacity: 0,
       });
   }
@@ -400,8 +400,6 @@ function windowOnLoad() {
   ////////////////////////////
   ////////// TRACERY /////////
   ////////////////////////////
-
-  // http://www.crystalcodepalace.com/traceryTut.html
 
   var story = {
     sentence: [
