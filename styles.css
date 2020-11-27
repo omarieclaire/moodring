@@ -8,6 +8,23 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   scroll-behavior: smooth;
 }
 
+#statuspanel[type="overLink"] #statuspanel-label {
+  display:none!important;
+ }
+ Other messages include these:
+ 
+ #statuspanel[type="status"] #statuspanel-label[value^="Look"],
+ #statuspanel[type="status"] #statuspanel-label[value^="Connect"],
+ #statuspanel[type="status"] #statuspanel-label[value^="Send"],
+ #statuspanel[type="status"] #statuspanel-label[value^="Transfer"],
+ #statuspanel[type="status"] #statuspanel-label[value^="Read"],
+ #statuspanel[type="status"] #statuspanel-label[value^="Wrote"],
+ #statuspanel[type="status"] #statuspanel-label[value^="Wait"],
+ #statuspanel[type="status"] #statuspanel-label[value*="TLS handshake"],
+ #statuspanel[type="status"] #statuspanel-label[value*="FTP transaction"] {
+  display:none!important;
+ }
+
 /* HTML5 display-role reset for older browsers */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -1104,7 +1121,7 @@ h1 {
   display: none;
 }
 
-.btn {
+.btn, input[type=submit] {
   background-color: black;
   color: #c2f08e;
   text-decoration: none;
@@ -1119,33 +1136,33 @@ h1 {
   font-family: 'PT Mono', monospace;
 }
 
-.btn:hover {
+.btn:hover, input[type=submit]:hover {
   color: #cf635f;
   border-color: #cf635f;
   transition: all 2s ease 0s;
   border-radius: 50px;
 }
 
-.btn:focus {
+.btn:focus, input[type=submit]:focus {
   box-shadow: 0 0 0 1px yellow;
   outline: none;
 }
 
-.btn:active {
+.btn:active, input[type=submit]:focus {
   color: #e9a5a2;
 }
 
-#beginBtn, #findSongBtn {
+#beginBtn, #findSongBtn, input[type=submit]:focus {
   z-index: 10;
 }
 
-.beginBtnToScroll {
-  border: .0px solid black;
-  opacity: 0.7;
+input[type=submit] {
+  height: unset;
+  width: 5rem;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
-  .btn {
+  .btn, input[type=submit]:focus {
     font-size: .95rem;
   }
 }

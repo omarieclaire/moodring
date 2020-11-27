@@ -626,7 +626,6 @@ function windowOnLoad() {
     }, 11000);
     // setTimeout(function(){
     //   beginBtn.innerHTML = "scroll down";
-    //   beginBtn.classList.add("beginBtnToScroll");
     //   beginBtn.classList.remove("fade");
     // }, 10000);
     document.getElementById("beginLvlRow2").classList.remove("pulse");

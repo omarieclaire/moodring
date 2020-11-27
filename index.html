@@ -48,7 +48,7 @@
   <div id="hidden-main" class="hidden">
     <div id="beginLvl" class="beginLvl lvl">
       <span class="background-image" role="img"
-        aria-label="Rocky cavern walls on the left and right. A waterfall flows down them and an orange figure sits at the base of the waterfall amongst some plants"></span>
+        aria-label="Glowing cavern walls are on either side, covered in plants; they continue downwards into the dark below"></span>
       <button type="button" id="muteBtn" class="btn" value="mute"></button>
       <!-- <button id="muteBtn" class="btn" value="mute" onclick="pauseSound(backgroundMusic)"></button> -->
       <h1>Mood Ring</h1>
@@ -71,14 +71,14 @@
         <div id="scrollWordDiv">
           <!-- <img id="scrollText" draggable="false" class="image" src="images/beginLvl/scrollText.png"> -->
         </div>
-        <div id="beginBtnArrowDiv" alt="arrow"></div>
+        <div id="beginBtnArrowDiv" alt="an animated scrolling arrow points downward"></div>
         <button type="button" id="beginBtn" class="btn">begin</button>
         <img id="greenGlow" draggable="false" class="image" alt="A green glow emanates upwards from a small ring"
           src="images/beginLvl/greenglow.png">
       </div>
     </div>
     <span class="background-image" role="img"
-      aria-label="Glowing blue and purple cave walls with stalactites growing from the overarch"></span>
+      aria-label="Glowing blue and purple cave walls with stalactites growing from the overarchs"></span>
     <div id="spacer0" class="spacer lvl">
     </div>
 
@@ -90,13 +90,21 @@
           alt="A hovering figure whose shoulders are draped with a leafy vines" src="images/lastLvl/plantLady.gif">
 
         <p id="whatDoYouSeek" class="txt">What do you<br>seek?</p>
-        <!-- <form onSubmit="return false" autocomplete="off" onkeydown="return event.key != 'Enter';"> -->
-        <form autocomplete="off" onkeydown="return event.key != 'Enter';">
-          <input name="text" class="choice" maxlength="11" id="seekText" placeholder=""></input>
+        <!-- <form autocomplete="off" onkeydown="return event.key != 'Enter';">
+          <input name="text" class="choice" maxlength="16" id="seekText" placeholder=""></input>
+        </form> -->
+
+        <script type="text/javascript">var submitted=false;</script>
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {}"></iframe>
+     
+         <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeqlWaUDZQohPOdlUsr_8DT9aV2yESFIQojiOfapHQZKio68w/formResponse" method="post" target="hidden_iframe" autocomplete="off"
+         onsubmit="submitted=true;">
+          <input name="entry.1016404426" class="choice" maxlength="16" id="seekText" placeholder=""></input>
+          <div id="seekBtnArrowDiv"></div>
+          <input type="submit" id="seekBtn" class="btn" value="send" />
         </form>
-        <div id="seekBtnArrowDiv"></div>
-        <button type="button" id="seekBtn" class="btn">send</button>
-        <!-- <img id="creaturesSpin" draggable="false" class="image"  alt="creatures" src="images/beginLvl/creaturesR.png"> -->
+
+        <!-- <button type="button" id="seekBtn" class="btn">send</button> -->
       </div>
     </div>
 
@@ -117,7 +125,7 @@
     </div>
 
     <div id="choice1Lvl" class="choiceLvl choice1Lvl lvl">
-      <span class="background-image" role="img" aria-label="Cavern"></span>
+      <span class="background-image" role="img" aria-label="Plants and mushrooms grow from the rock wall; mysterious hieroglyphics and a purple skull are amongst the plants"></span>
       <div class="textRow">
         <p id="upOrDownText" class="choiceTxt"> <span class="number">One:</span><br>are you <a class="choiceLink"
             id="upLink" href="#">light as air</a> or <a class="choiceLink" id="downLink" href="#">rooted in the
