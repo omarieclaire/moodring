@@ -348,6 +348,7 @@ div.imageRow>a:last-child {
 @media (max-width: 680px), screen and (orientation: portrait) {
   #musicCreditRow {
     margin-bottom: 0;
+    width: 97vw;
   }
 }
 
@@ -751,7 +752,7 @@ input {
   grid-template-rows: .5fr 3fr .5fr;
   grid-gap: 0;
   grid-template-areas: ". dLogoRow ." ". creditsTextRow ." ". cLogoRow .";
-  height: 120vh;
+  height: 160vh;
   width: 100vw;
   background-color: #78a5e8;
 }
@@ -868,6 +869,7 @@ input {
 @media (max-width: 680px), screen and (orientation: portrait) {
   #creditsTextRow {
     width: 80vw;
+    text-size: .25rem;
   }
 }
 
@@ -960,7 +962,7 @@ input {
     background-repeat: no-repeat;
   }
   #creditsLvl {
-    height: 200vh;
+    height: 240vh;
     width: 100vw;
     background-color: #78a5e8;
     background-position: top 0 left 0, top 0 right 0;
@@ -1395,6 +1397,7 @@ input[type=submit] {
 
 .creditsPara {
   margin: 1rem 0rem;
+  width: 85vw;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
