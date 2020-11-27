@@ -758,15 +758,12 @@ input {
 
 #creditsLvl {
   display: grid;
-  grid-template-columns: .25fr 1fr .25fr;
-  grid-template-rows: .25fr .5fr 1fr 1fr 1fr;
+  grid-template-columns: .25fr 2fr .25fr;
+  grid-template-rows: .5fr 3fr .5fr;
   grid-gap: 0;
-  grid-template-areas: ". . . " ". dLogoRow ." ". creditsTextRow ." ". cLogoRow ." ". . .";
-  height: 100vh;
+  grid-template-areas: ". dLogoRow ." ". creditsTextRow ." ". cLogoRow .";
+  height: 120vh;
   width: 100vw;
-  background-position: top 0 left 0, top 0 right 0;
-  background-size: auto 100%, auto 100%;
-  background-repeat: no-repeat, no-repeat;
   background-color: #78a5e8;
 }
 
@@ -845,11 +842,26 @@ input {
   align-items: center;
   align-content: center;
   text-align: center;
+  margin-top: 7rem;
+}
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  #dLogoRow {
+    grid-area: dLogoRow;
+    margin-top: 3rem;
+  }
 }
 
 #ccaLogo { 
   margin: 2rem;
   max-width: 15rem;
+}
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  #ccaLogo { 
+    margin: 2rem 0;
+    max-width: 12rem;
+  }
 }
 
 #btnsRow {
@@ -884,6 +896,7 @@ input {
   align-items: center;
   align-content: center;
   text-align: center;
+  margin-bottom: 5rem;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
@@ -968,7 +981,7 @@ input {
     background-repeat: no-repeat;
   }
   #creditsLvl {
-    height: 100vh;
+    height: 200vh;
     width: 100vw;
     background-color: #78a5e8;
     background-position: top 0 left 0, top 0 right 0;
@@ -1382,6 +1395,12 @@ h1 {
 
 .creditsPara {
   margin: 1rem 0rem;
+}
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  .creditsPara {
+    font-size: .75;
+  }
 }
 
 @keyframes pulse {
