@@ -657,8 +657,9 @@ function windowOnLoad() {
   seekBtn.addEventListener("click", seekBtnHandler); // add an eventlistener to the  button
   function seekBtnHandler(event) {
     if (seekText.value !== "") {
-      playerState.itemSought = seekText.value;
-      story.itemSought.push(seekText.value);
+      let yourHeartsDesire = seekText.value.toLowerCase();
+      playerState.itemSought = yourHeartsDesire;
+      story.itemSought.push(yourHeartsDesire);
     } else {
       playerState.itemSought = "peace";
       story.itemSought.push("peace");
