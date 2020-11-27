@@ -147,14 +147,14 @@ function windowOnLoad() {
     gsap.to(image, { scale: 1.7, duration: 6 });
     gsap
       .timeline()
-      .to(lvl, {autoAlpha: 0, onComplete: onComplete})
+      .to(lvl, { autoAlpha: 0, onComplete: onComplete })
       .from(clone, {
         y: 200,
         scale: 0.8,
         duration: 9,
         autoAlpha: 1,
         ease: "back(1)",
-        onComplete: runWhenComplete
+        onComplete: runWhenComplete,
         // toggleClass: glowAndScale
       });
   }
@@ -194,9 +194,13 @@ function windowOnLoad() {
           // pinSpacing: false,
         },
       })
-      .to("#blueSwimmer", { y: innerHeight * 1.3, rotate: -360, ease: "back(2)" })
+      .to("#blueSwimmer", {
+        y: innerHeight * 1.3,
+        rotate: -360,
+        ease: "back(2)",
+      });
   }
-  
+
   function blueSwimmerFinalFallAni() {
     gsap
       .timeline({
@@ -210,9 +214,13 @@ function windowOnLoad() {
           // pinSpacing: false,
         },
       })
-      .to("#blueSwimmer", { y: innerHeight * 3, rotate: -620, scale: .25, opacity: 0});
+      .to("#blueSwimmer", {
+        y: innerHeight * 3,
+        rotate: -620,
+        scale: 0.25,
+        opacity: 0,
+      });
   }
-
 
   function displayEndPoem() {
     gsap
@@ -289,13 +297,13 @@ function windowOnLoad() {
   backgroundMusic.loop = true;
 
   const beginSound = new Audio("./sounds/beginSound.mp3");
-  beginSound.preload = 'auto';
+  beginSound.preload = "auto";
   beginSound.load();
   const genSound = new Audio("./sounds/genSound.mp3");
-  genSound.preload = 'auto';
+  genSound.preload = "auto";
   genSound.load();
   const sendSound = new Audio("./sounds/sendSound.mp3");
-  sendSound.preload = 'auto';
+  sendSound.preload = "auto";
 
   function playSound(audio) {
     var currSong = audio.cloneNode();
@@ -305,7 +313,6 @@ function windowOnLoad() {
   function playBackgroundMusic(audio) {
     audio.play();
   }
-  
 
   var muted = false;
   var muteBtn = document.getElementById("muteBtn"); // get the button
@@ -327,10 +334,10 @@ function windowOnLoad() {
     if (backgroundMusic.volume > 0.01) {
       backgroundMusic.volume = Math.max(0, backgroundMusic.volume - 0.07);
       setTimeout(fadeSound, 800);
-      console.log("fademusic")
+      console.log("fademusic");
     } else {
       backgroundMusic.pause();
-      console.log("pausemusic")
+      console.log("pausemusic");
     }
   }
 
@@ -596,6 +603,20 @@ function windowOnLoad() {
     setTimeout(function () {
       displayScrollArrow("beginBtnArrowDiv");
     }, 6000);
+
+    function showScrollText() {
+      const img = new Image();
+      img.src = "images/beginLvl/scrollText.png";
+      img.id = "scrollText"
+      img.setAttribute("draggable", "false");
+      img.setAttribute("class", "image");
+      document.getElementById("scrollWordDiv").appendChild(img);
+      gsap.to("#scrollText", { opacity: 1, duration: 0.5 });
+    }
+
+    setTimeout(function () {
+      showScrollText();
+    }, 11000);
     // setTimeout(function(){
     //   beginBtn.innerHTML = "scroll down";
     //   beginBtn.classList.add("beginBtnToScroll");
@@ -776,27 +797,26 @@ function windowOnLoad() {
 
       function scrollTriggerCallback() {
         console.log("Scroll Trigger callback");
-
       }
       // textDom.innerHTML = textPhrase.innerHTML;
 
-        //textDom.classList.add("glow");
+      //textDom.classList.add("glow");
 
-        // function whenDone() {
-        //   textDom.parentElement.appendChild(clonedTextPhrase);
-        //   textDom.remove();
-        // }
-        // gsap
-        //   .timeline()
-        //   .to(textDom, { autoAlpha: 0, ease: "back(1)", onComplete: whenDone , duration: 3})
-        //   .to(clonedTextPhrase, { autoAlpha: 1, ease: "back(1)", duration: 3});
+      // function whenDone() {
+      //   textDom.parentElement.appendChild(clonedTextPhrase);
+      //   textDom.remove();
+      // }
+      // gsap
+      //   .timeline()
+      //   .to(textDom, { autoAlpha: 0, ease: "back(1)", onComplete: whenDone , duration: 3})
+      //   .to(clonedTextPhrase, { autoAlpha: 1, ease: "back(1)", duration: 3});
 
       scrollTriggerFun(textDom, textPhrase, chosenImageDOM, doNothing);
       const unchosenImageId = unchosenValue + "Img";
       const unchosenImageDOM = document.getElementById(unchosenImageId);
       unchosenImageDOM.classList.remove("cursorHand");
       unchosenImageDOM.classList.add("fade");
-      
+
       link.style.display = "grid";
       spacer.style.display = "grid";
 
